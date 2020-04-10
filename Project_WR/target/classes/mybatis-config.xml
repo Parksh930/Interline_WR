@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="test.interline.report.vo.userVO " alias="user" />
+		<typeAlias type="test.interline.report.vo.userVO" alias="user"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="MainMapper.xml" />
