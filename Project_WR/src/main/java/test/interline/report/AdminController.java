@@ -34,4 +34,6 @@ public class AdminController {
 		model.addAttribute("report_all",all_list);
 		return "Admin/reportList";
 	}
+	
+	
 }
