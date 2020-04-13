@@ -29,6 +29,7 @@ public class MainController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String loginForm(Model model) {
+		logger.debug("loginForm");
 		model.addAttribute("error",null);
 		return "login";
 	}

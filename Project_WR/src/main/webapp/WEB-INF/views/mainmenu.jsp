@@ -19,5 +19,6 @@
 <c:if test='${sessionScope.user_inform.authority == "a"}'>
 <a href=./ReportList>全報告書閲覧</a>
 </c:if>
+<a href=./logout>ログアウト</a>
 </body>
 </html>
