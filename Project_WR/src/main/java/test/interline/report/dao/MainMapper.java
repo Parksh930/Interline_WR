@@ -6,6 +6,6 @@ import test.interline.report.vo.userVO;
 
 public interface MainMapper {
 
-	ArrayList<userVO> getList();
+	userVO getUser(String login_id);
 
 }

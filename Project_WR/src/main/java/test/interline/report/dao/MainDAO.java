@@ -14,9 +14,9 @@ public class MainDAO {
 	@Autowired
 	SqlSession session;
 
-	public ArrayList<userVO> getList() {
+	public userVO getUser(String login_id) {
 		MainMapper mapper = session.getMapper(MainMapper.class);
-		ArrayList<userVO> vo = mapper.getList();
+		userVO vo = mapper.getUser(login_id);
 		
 		return vo;
 	}
