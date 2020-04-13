@@ -5,6 +5,8 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="test.interline.report.vo.userVO" alias="user"/>
+		<typeAlias type="test.interline.report.vo.reportListVO" alias="report_list"/>
+		<typeAlias type="test.interline.report.vo.reportVO" alias="report_main"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="MainMapper.xml" />
