@@ -15,6 +15,7 @@
 -->
 </head>
 <body style="width:98%;height:98%">
+<div id='userNum' style="display:none;">${sessionScope.user_inform.userNum}</div>
 <div id="OZViewer" style="width:98%;height:98%"></div>
 <script type="text/javascript" >
 	var today = new Date();
@@ -54,6 +55,7 @@
  	//
  	//오즈를 뷰어호출 소스
 	function SetOZParamters_OZViewer(){
+		var userNum=$('#userNum').html();
 		var oz;
 		oz = document.getElementById("OZViewer");
 		oz.sendToActionScript("connection.servlet","http://serverComputer:8888/oz80/server");
@@ -65,7 +67,7 @@
 
 		oz.sendToActionScript("odi.odinames", "weeklyReport");
 		oz.sendToActionScript("odi.weeklyReport.pcount", "1");
-		oz.sendToActionScript("odi.weeklyReport.args1", "userNum=9999");
+		oz.sendToActionScript("odi.weeklyReport.args1", "userNum="+userNum);
 		
 		return true;
 	}
