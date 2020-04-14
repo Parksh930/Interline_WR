@@ -12,6 +12,7 @@
 		<org.springframework-version>4.3.18.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<project.lib.path>${project.basedir}/src/main/webapp/WEB-INF/lib</project.lib.path>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -157,7 +158,16 @@
   		  <artifactId>jackson-databind</artifactId>
     		<version>2.10.2</version>
 		</dependency>
-	
+		
+		<!-- oz스케쥴러 서버관련 라이브러리 -->
+		<dependency>
+			<groupId>external</groupId>
+			<artifactId>external</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.lib.path}/ozsfw80.jar</systemPath>
+		</dependency>
+		
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
