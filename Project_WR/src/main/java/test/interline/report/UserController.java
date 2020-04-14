@@ -52,5 +52,12 @@ public class UserController {
 		return "User/writeReport";
 	}
 	
-		
+	//임시저장페이지로
+		@RequestMapping(value = "/saveOZD", method = RequestMethod.GET)
+		public String saveOZD(Model model, String tempJson) {
+			logger.debug("loginForm");
+			model.addAttribute("error",null);
+			System.out.println(tempJson);
+			return "User/saveOZD";
+		}	
 }
