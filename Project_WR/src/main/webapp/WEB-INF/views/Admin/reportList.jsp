@@ -41,6 +41,7 @@ function formSubmit(page){
 </tr>
 </c:forEach>
 </table>
+
 <div id = "navigator">
 <a href="javascript:formSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁</a>&nbsp;
 <a href="javascript:formSubmit(${navi.currentPage-1})">◀</a> &nbsp;&nbsp;
