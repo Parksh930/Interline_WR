@@ -31,6 +31,7 @@
 			
 			<mvc:mapping path="/**"/>
 			<mvc:exclude-mapping path="/login"/>
+			
 			<beans:ref bean="loginInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
