@@ -43,5 +43,14 @@ public class UserController {
 		return "User/reportList";
 	}
 	
+	
+	//신규작성페이지로
+	@RequestMapping(value = "/writeReport", method = RequestMethod.GET)
+	public String loginForm(Model model) {
+		logger.debug("loginForm");
+		model.addAttribute("error",null);
+		return "User/writeReport";
+	}
+	
 		
 }
