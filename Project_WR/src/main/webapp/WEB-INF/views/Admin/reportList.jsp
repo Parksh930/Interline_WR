@@ -7,6 +7,22 @@
 <head>
 <meta charset="UTF-8">
 <title>ReportList</title>
+
+<script>
+
+function formSubmit(page){
+	
+	if(page < 1){
+		page =1;
+	}
+	
+	var p = document.getElementById('page');
+	
+	p.value=page;
+							
+	document.location.href = "ReportList?page=" + p.value;
+}
+</script>
 </head>
 <body>
 
@@ -25,5 +41,19 @@
 </tr>
 </c:forEach>
 </table>
+<div id = "navigator">
+<a href="javascript:formSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁</a>&nbsp;
+<a href="javascript:formSubmit(${navi.currentPage-1})">◀</a> &nbsp;&nbsp;
+
+<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}">
+<c:if test="${counter == navi.currentPage}"><b></c:if>
+<a href="javascript:formSubmit(${counter})">${counter}</a>&nbsp;
+<c:if test="${counter == navi.currentPage}"></b></c:if>
+</c:forEach>
+&nbsp;&nbsp;
+<a href="javascript:formSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
+<a href="javascript:formSubmit(	${navi.currentPage + navi.pagePerGroup})">▷▷</a>
+</div>
+<input type = "hidden" name="page" id="page" value="1"/>
 </body>
 </html>
