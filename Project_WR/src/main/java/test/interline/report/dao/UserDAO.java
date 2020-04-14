@@ -14,11 +14,5 @@ import test.interline.report.vo.reportListVO;
 	@Autowired
 		SqlSession session;
 		
-	public ArrayList<reportListVO> getMy_List() {
-		UserMapper mapper = session.getMapper(UserMapper.class);
-		
-		ArrayList<reportListVO> my_List = mapper.getMy_List();
-		
-		return my_List;
-	}
+	
 }

@@ -6,56 +6,6 @@
 <mapper namespace="test.interline.report.dao.UserMapper">
 
 
-<select id="getMy_List" resultType="report_list">
-		select * from report_mylist
-	</select>
-	
-	
-<insert id="writeReport" >
-	insert into report_main
-	(
-		report_main
-	    ,Report_Num
-	    ,StartWork
-	    ,EndWork
-	    ,ReportContents
-	    ,DailyRemarks
-	    ,ContentNum
-	)
-	values
-	(
-		#{report_main}
-		,#{Report_Num}
-		,#{StartWork}
-		,#{EndWork}
-		,#{ReportContents}
-		,#{DailyRemarks}
-		,#{ContentNum}
-	)
-</insert>
 
-
-<insert id="keepWriting" >
-	insert into report_main
-	(
-		report_main
-	    ,Report_Num
-	    ,StartWork
-	    ,EndWork
-	    ,ReportContents
-	    ,DailyRemarks
-	    ,ContentNum
-	)
-	values
-	(
-		#{report_main}
-		,#{Report_Num}
-		,#{StartWork}
-		,#{EndWork}
-		,#{ReportContents}
-		,#{DailyRemarks}
-		,#{ContentNum}
-	)
-</insert>
 
 </mapper>
