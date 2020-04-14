@@ -26,6 +26,22 @@ public class UserController {
 	UserDAO dao;
 	
 
+//@RequestMapping(value="writeReport", method=RequestMethod.POST)
+	
+	
+	@RequestMapping(value = "/myReport", method = RequestMethod.GET)
+	public String myReport(Model model, int reportNum) {
+		logger.debug("reportNum:{}", reportNum);
+		return "User/myReport";
+	}
+	
+	@RequestMapping(value = "/ReportList", method = RequestMethod.GET)
+	public String getList2(Model model) {
+		ArrayList<reportListVO> my_List = dao.getMy_List();
+		
+		model.addAttribute("report_my",my_List);
+		return "User/reportList";
+	}
 	
 		
 	}
