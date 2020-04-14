@@ -35,8 +35,8 @@ public class UserController {
 		return "User/myReport";
 	}
 	
-	@RequestMapping(value = "/ReportList", method = RequestMethod.GET)
-	public String getList2(Model model) {
+	@RequestMapping(value = "/myReportList", method = RequestMethod.GET)
+	public String getList(Model model) {
 		ArrayList<reportListVO> my_List = dao.getMy_List();
 		
 		model.addAttribute("report_my",my_List);
@@ -44,4 +44,4 @@ public class UserController {
 	}
 	
 		
-	}
+}

@@ -14,6 +14,7 @@ public class AdminDAO {
 	@Autowired
 	SqlSession session;
 	
+	//全ての報告書リストを出力
 	public ArrayList<reportListVO> getAll_List() {
 		AdminMapper mapper = session.getMapper(AdminMapper.class);
 		

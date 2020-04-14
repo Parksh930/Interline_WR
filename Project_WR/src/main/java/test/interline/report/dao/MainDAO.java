@@ -14,6 +14,7 @@ public class MainDAO {
 	@Autowired
 	SqlSession session;
 
+	//ユーザーの情報を検索
 	public userVO getUser(String login_id) {
 		MainMapper mapper = session.getMapper(MainMapper.class);
 		userVO vo = mapper.getUser(login_id);

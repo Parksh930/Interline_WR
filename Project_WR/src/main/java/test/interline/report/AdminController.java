@@ -21,12 +21,14 @@ public class AdminController {
 	@Autowired
 	AdminDAO dao;
 	
+	//レポートを読む
 	@RequestMapping(value = "/ReadReport", method = RequestMethod.GET)
 	public String readReport(Model model, int reportNum) {
 		logger.debug("reportNum:{}", reportNum);
 		return "Admin/readReport";
 	}
 	
+	//レポートリスト
 	@RequestMapping(value = "/ReportList", method = RequestMethod.GET)
 	public String getList2(Model model) {
 		ArrayList<reportListVO> all_list = dao.getAll_List();

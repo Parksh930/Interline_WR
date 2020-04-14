@@ -27,14 +27,22 @@ public class MainController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	//メインメニュー
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String loginForm(Model model) {
-		logger.debug("loginForm");
-		model.addAttribute("error",null);
+	public String MainMenu(HttpSession session) {
+		session.getAttribute("login_id");
+		session.getAttribute("user_inform");
+		return "mainmenu";
+	}
+	
+	//ログインフォーム
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String loginForm() {
+
 		return "login";
 	}
 	
-	//ログイン
+	//ログイン処理
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(Model model,String login_id, String login_pw, HttpSession session) {
 		logger.debug("login id:{}, pw:{}", login_id,login_pw);
@@ -45,7 +53,7 @@ public class MainController {
 			session.setAttribute("login_id", user.getUserId());
 			session.setAttribute("user_inform", user);
 			
-			return"redirect:MainMenu";
+			return"redirect:/";
 
 		}
 		
@@ -57,12 +65,6 @@ public class MainController {
 		return "login";
 	}
 	
-	@RequestMapping(value = "/MainMenu", method = RequestMethod.GET)
-	public String MainMenu(HttpSession session) {
-		session.getAttribute("login_id");
-		session.getAttribute("user_inform");
-		return "mainmenu";
-	}
 	
 	//ログアウト
 	@RequestMapping(value="/logout", method=RequestMethod.GET)

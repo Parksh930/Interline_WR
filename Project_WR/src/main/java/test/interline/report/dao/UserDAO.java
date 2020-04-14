@@ -9,7 +9,8 @@ import org.springframework.stereotype.Repository;
 import test.interline.report.vo.reportListVO;
 
 @Repository
-	public class UserDAO {
+
+public class UserDAO {
 		
 	@Autowired
 		SqlSession session;
@@ -21,5 +22,5 @@ import test.interline.report.vo.reportListVO;
 		
 		return my_List;
 
-}
+	}
 }
