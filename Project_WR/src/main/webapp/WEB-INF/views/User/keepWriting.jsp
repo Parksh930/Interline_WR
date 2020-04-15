@@ -14,23 +14,45 @@
 -->
 </head>
 <body style="width:98%;height:98%">
-<%@ page import="java.util.*"%>
-<%@page import="test.interline.report.vo.userVO"%>
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%request.setCharacterEncoding("UTF-8");%>
-<%userVO user=(userVO)request.getSession().getAttribute("user_inform"); %>
-<div id='userNum' ><%out.println(user.getUserId()); %></div>
-<div id="OZViewer" style="width:98%;height:98%"></div>
-<script type="text/javascript" >
-	function SetOZParamters_OZViewer(){
-		var userId=$('#userNum').html();
-		var oz;
-		oz = document.getElementById("OZViewer");
-		oz.sendToActionScript("connection.servlet","http://serverComputer:8888/oz80/server");
-		oz.sendToActionScript("connection.openfile","http://serverComputer:8888/ozsch80/Repository/ozd/"+userId+".ozd");
-		return true;
-	}
-	start_ozjs("OZViewer","http://serverComputer:8888/oz80/ozhviewer/");
-</script>
+	<%@ page import="java.util.*"%>
+	<%@page import="test.interline.report.vo.userVO"%>
+	<%@ page contentType="text/html;charset=UTF-8" %>
+	<%request.setCharacterEncoding("UTF-8");%>
+	<%userVO user=(userVO)request.getSession().getAttribute("user_inform"); %>
+	<div id='userNum' ><%out.println(user.getUserId()); %></div>
+	<div id="OZViewer" style="width:98%;height:98%"></div>
+	<script type="text/javascript" >
+		function SetOZParamters_OZViewer(){
+			var userId=$('#userNum').html();
+			var oz;
+			oz = document.getElementById("OZViewer");
+			oz.sendToActionScript("connection.servlet","http://serverComputer:8888/oz80/server");
+			oz.sendToActionScript("connection.openfile","http://serverComputer:8888/ozsch80/Repository/ozd/"+userId+".ozd");
+			return true;
+		}
+		start_ozjs("OZViewer","http://serverComputer:8888/oz80/ozhviewer/");
+	
+		function OZUserEvent_OZViewer(param1, param2, param3) {
+			$('#tempJson').val(param1);
+			var weeks=JSON.parse(param2);
+
+			$('#week1').val(weeks.week1);
+			$('#week2').val(weeks.week2);
+			$('#week3').val(weeks.week3);
+			//console.log($('#tempJson').val());
+			
+			
+			
+			document.getElementById('saveOZD').submit();
+
+		}
+		
+	</script>
+	<form id="saveOZD" action="saveOZD">
+		<input id="tempJson" type="hidden" name="tempJson" value="">
+		<input id="week1" type="hidden" name="week" value="">
+		<input id="week2" type="hidden" name="week" value="">
+		<input id="week3" type="hidden" name="week" value="">
+	</form>
 </body>
 </html>
