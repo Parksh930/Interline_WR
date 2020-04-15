@@ -168,6 +168,14 @@
 			<systemPath>${project.lib.path}/ozsfw80.jar</systemPath>
 		</dependency>
 		
+		<!-- json 라이브러리 (parsing쓰기위함) -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20190722</version>
+		</dependency>
+				
+		
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

@@ -53,11 +53,22 @@ public class UserController {
 	}
 	
 	//임시저장페이지로
-		@RequestMapping(value = "/saveOZD", method = RequestMethod.GET)
-		public String saveOZD(Model model, String tempJson) {
-			logger.debug("loginForm");
-			model.addAttribute("error",null);
-			System.out.println(tempJson);
-			return "User/saveOZD";
-		}	
+	@RequestMapping(value = "/saveOZD", method = RequestMethod.GET)
+	public String saveOZD(Model model, String tempJson ,String[] week) {
+		logger.debug("loginForm");
+		model.addAttribute("error",null);
+		System.out.println(tempJson);
+		model.addAttribute("tempJson",tempJson);
+		model.addAttribute("week",week);
+		
+		return "User/saveOZD";
+	}
+	
+	//계속작성으로
+	@RequestMapping(value = "/keepWriting", method = RequestMethod.GET)
+	public String keepWriting(Model model) {
+		logger.debug("loginForm");
+		model.addAttribute("error",null);
+		return "User/keepWriting";
+	}
 }

@@ -77,12 +77,18 @@
 	function OZUserEvent_OZViewer(param1, param2, param3) {
 		
 		$('#tempJson').val(param1);
+		$('#week1').val(period[0]);
+		$('#week2').val(period[1]);
+		$('#week3').val(period[2]);
 		console.log($('#tempJson').val());
 		document.getElementById('saveOZD').submit();
 	}
 </script>
 	<form id="saveOZD" action="saveOZD">
 		<input id="tempJson" type="hidden" name="tempJson" value="">
+		<input id="week1" type="hidden" name="week" value="">
+		<input id="week2" type="hidden" name="week" value="">
+		<input id="week3" type="hidden" name="week" value="">
 	</form>
 </body>
 </html>
