@@ -75,14 +75,30 @@
 	//return json
 	//오즈내의 버튼이 클릭되면 실행된다. 오즈에서 일률적으로 뿌려주는 데이터를 정리하는 함수
 	function OZUserEvent_OZViewer(param1, param2, param3) {
-		
-		$('#tempJson').val(param1);
-		console.log($('#tempJson').val());
-		document.getElementById('saveOZD').submit();
+		if(param3=="save"){
+			$('#tempJson').val(param1);
+			$('#week1').val(period[0]);
+			$('#week2').val(period[1]);
+			$('#week3').val(period[2]);
+			console.log($('#tempJson').val());
+			document.getElementById('saveOZD').submit();
+		}else if(param3=="submit"){
+			//제이슨 변환
+			$('#submitJsonReport').val(/*제이슨스트링*/);
+			$('#submitJsonContents').val(/*제이슨스트링*/);
+			document.getElementById('submitReport').submit();
+		}
 	}
 </script>
 	<form id="saveOZD" action="saveOZD">
 		<input id="tempJson" type="hidden" name="tempJson" value="">
+		<input id="week1" type="hidden" name="week" value="">
+		<input id="week2" type="hidden" name="week" value="">
+		<input id="week3" type="hidden" name="week" value="">
+	</form>
+	<form id="submitReport" action="submitReport">
+		<input id="submitJsonReport" type="hidden" name="submitJsonReport" value="">
+		<input id="submitJsonContents" type="hidden" name="submitJsonContents" value="">
 	</form>
 </body>
 </html>
