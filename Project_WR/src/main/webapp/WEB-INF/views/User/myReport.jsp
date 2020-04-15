@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form action = "myReport" method = "get">
+        student id : <input type = "text" name = "id"><br/>
+        <input type = "submit" value = "전송">
+    </form>
 
 </body>
 </html>

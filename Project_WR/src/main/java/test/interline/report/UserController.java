@@ -25,10 +25,6 @@ public class UserController {
 	@Autowired
 	UserDAO dao;
 	
-
-//@RequestMapping(value="writeReport", method=RequestMethod.POST)
-	
-	
 	@RequestMapping(value = "/myReport", method = RequestMethod.GET)
 	public String myReport(Model model, int reportNum) {
 		logger.debug("reportNum:{}", reportNum);

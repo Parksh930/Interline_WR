@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: luv3m
-=======
-Built-By: DaeunLabtop
->>>>>>> 63c48533db2a1f00c9dfea20bd5d27f623cbc4fa
 Build-Jdk: 1.8.0_241
 Created-By: Maven Integration for Eclipse
 
