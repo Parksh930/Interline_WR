@@ -15,6 +15,7 @@
 -->
 </head>
 <body style="width:98%;height:98%">
+<div id='userNum' style="display:none;">${sessionScope.user_inform.userNum}</div>
 <div id="OZViewer" style="width:98%;height:98%"></div>
 <script type="text/javascript" >
 	var today = new Date();
@@ -49,11 +50,11 @@
 		return year1+"-"+month1+"-"+date1+"~"+year2+"-"+month2+"-"+date2;
 	}
 
-
  	//input null
  	//
  	//오즈를 뷰어호출 소스
 	function SetOZParamters_OZViewer(){
+		var userNum=$('#userNum').html();
 		var oz;
 		oz = document.getElementById("OZViewer");
 		oz.sendToActionScript("connection.servlet","http://serverComputer:8888/oz80/server");
@@ -65,20 +66,23 @@
 
 		oz.sendToActionScript("odi.odinames", "weeklyReport");
 		oz.sendToActionScript("odi.weeklyReport.pcount", "1");
-		oz.sendToActionScript("odi.weeklyReport.args1", "userNum=9999");
+		oz.sendToActionScript("odi.weeklyReport.args1", "userNum="+userNum);
 		
 		return true;
 	}
 	start_ozjs("OZViewer","http://serverComputer:8888/oz80/ozhviewer/");
-
 	//input (string,string,string)
 	//return json
 	//오즈내의 버튼이 클릭되면 실행된다. 오즈에서 일률적으로 뿌려주는 데이터를 정리하는 함수
 	function OZUserEvent_OZViewer(param1, param2, param3) {
-		console.log(param1);
-		console.log(param2);
-		console.log(param3);
+		
+		$('#tempJson').val(param1);
+		console.log($('#tempJson').val());
+		document.getElementById('saveOZD').submit();
 	}
 </script>
+	<form id="saveOZD" action="saveOZD">
+		<input id="tempJson" type="hidden" name="tempJson" value="">
+	</form>
 </body>
 </html>
