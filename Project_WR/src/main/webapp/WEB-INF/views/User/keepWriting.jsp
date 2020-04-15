@@ -33,18 +33,19 @@
 		start_ozjs("OZViewer","http://serverComputer:8888/oz80/ozhviewer/");
 	
 		function OZUserEvent_OZViewer(param1, param2, param3) {
-			$('#tempJson').val(param1);
-			var weeks=JSON.parse(param2);
-
-			$('#week1').val(weeks.week1);
-			$('#week2').val(weeks.week2);
-			$('#week3').val(weeks.week3);
-			//console.log($('#tempJson').val());
-			
-			
-			
-			document.getElementById('saveOZD').submit();
-
+			if(param3=="save"){
+				$('#tempJson').val(param1);
+				var weeks=JSON.parse(param2);
+	
+				$('#week1').val(weeks.week1);
+				$('#week2').val(weeks.week2);
+				$('#week3').val(weeks.week3);
+				//console.log($('#tempJson').val());
+				document.getElementById('saveOZD').submit();
+			}else if(param3=="submit"){
+				
+			}
+				
 		}
 		
 	</script>
