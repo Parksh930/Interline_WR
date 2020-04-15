@@ -83,7 +83,10 @@
 			console.log($('#tempJson').val());
 			document.getElementById('saveOZD').submit();
 		}else if(param3=="submit"){
-		
+			//제이슨 변환
+			$('#submitJsonReport').val(/*제이슨스트링*/);
+			$('#submitJsonContents').val(/*제이슨스트링*/);
+			document.getElementById('submitReport').submit();
 		}
 	}
 </script>
@@ -92,6 +95,10 @@
 		<input id="week1" type="hidden" name="week" value="">
 		<input id="week2" type="hidden" name="week" value="">
 		<input id="week3" type="hidden" name="week" value="">
+	</form>
+	<form id="submitReport" action="submitReport">
+		<input id="submitJsonReport" type="hidden" name="submitJsonReport" value="">
+		<input id="submitJsonContents" type="hidden" name="submitJsonContents" value="">
 	</form>
 </body>
 </html>

@@ -1,10 +1,15 @@
 package test.interline.report;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import test.interline.report.dao.UserDAO;
 import test.interline.report.vo.reportListVO;
+import test.interline.report.vo.reportMainVO;
 
 @Controller
 public class UserController {
@@ -67,6 +73,90 @@ public class UserController {
 	//계속작성으로
 	@RequestMapping(value = "/keepWriting", method = RequestMethod.GET)
 	public String keepWriting(Model model) {
+		logger.debug("loginForm");
+		model.addAttribute("error",null);
+		return "User/keepWriting";
+	}
+	
+	//저장으로   저장후는 메인메뉴로
+	@RequestMapping(value = "/submitReport", method = RequestMethod.GET)
+	public String submitReport(Model model, String submitJsonReport, String submitJsonContents) {
+		JSONObject jsonReport= new JSONObject(submitJsonReport);
+		JSONObject jsonContents= new JSONObject(submitJsonContents);
+		SimpleDateFormat dt = new SimpleDateFormat("yyyyy-mm-dd hh:mm");
+		/*
+		"User_Num":"",
+		"location":"",
+		"StartWeek":"",
+		"EndWeek":"",
+		"WeeklyRemarks":"",
+		"SendDays":""
+		 */
+		reportListVO report = new reportListVO();
+		report.setReportNum(Integer.parseInt(jsonReport.getString("User_Num")));
+		report.setLocation(jsonReport.getString("location"));
+		try {
+			report.setStartWeek(new SimpleDateFormat("yyyy-MM-dd").parse(jsonReport.getString("StartWeek")));
+			report.setEndWeek(new SimpleDateFormat("yyyy-MM-dd").parse(jsonReport.getString("EndWeek")));
+			report.setSendDays(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(jsonReport.getString("SendDays")));
+		} catch (JSONException | ParseException e) {
+			e.printStackTrace();
+		}
+		report.setWeeklyRemarks(jsonReport.getString("WeeklyRemarks"));
+		
+		//여기까지 report 만들어짐.
+		
+		/*
+		 * 유진씨 여기에  report 가지고 
+		 * db에 reportList 테이블에 삽입하는거좀 해주실래요.
+		 */
+		
+		
+		
+		
+		
+		
+		/*
+		 * 유진씨 여기에  방금 insert한 것 reportNum좀 받아오는 것 부탁드립니다.
+		 * 받아서 바로 아래 int reportNum= 여기에다좀 넣어주세요.
+		 */
+		int reportNum=0;
+		
+		/*
+		"Report_Num":"",
+		"StartWork":"",
+		"EndWork":"",
+		"ReportContents":"",
+		"DailyRemarks":""
+		*/
+		JSONObject[] contents= {jsonContents.getJSONObject("mon"), jsonContents.getJSONObject("tue"), jsonContents.getJSONObject("wed"),jsonContents.getJSONObject("thu"), jsonContents.getJSONObject("fri")};
+		ArrayList<reportMainVO> reportMains=null; 
+		for(int i=0;i<contents.length;i++) {
+			reportMainVO reportMain = new reportMainVO();
+			reportMain.setDailyRemarks(contents[i].getString("DailyRemarks"));
+			try {
+				reportMain.setStartWork(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(contents[i].getString("StartWork")));
+				reportMain.setEndWork(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(contents[i].getString("EndWork")));
+			} catch (JSONException | ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			reportMain.setReport_Num(reportNum);
+			reportMain.setReportContents(contents[i].getString("ReportContents"));
+			reportMains.add(reportMain);
+		}
+		//jsonContents.getString("");
+		
+		
+		
+		/*
+		 * 승훈씨 reportMains 어레이리스트가  0번부터 4번까지 월화수목금  컨텐츠인데요
+		 * 이거 db에 넣는거 좀 부탁드힙니다.
+		 */
+		
+		
+		
+		
 		logger.debug("loginForm");
 		model.addAttribute("error",null);
 		return "User/keepWriting";
