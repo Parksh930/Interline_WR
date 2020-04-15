@@ -26,15 +26,15 @@ public class AdminController {
 	@Autowired
 	AdminDAO dao;
 	
-	//レポートを読む
+	//�꺃�깮�꺖�깉�굮沃���
 	@RequestMapping(value = "/ReadReport", method = RequestMethod.GET)
 	public String readReport(Model model, int reportNum) {
 		logger.debug("reportNum:{}", reportNum);
-		model.addAttribute("ReportNumValue", reportNum);
+		model.addAttribute("ReportNumValue", reportNum); // 모델값
 		return "Admin/readReport";
 	}
 	
-	//レポートリスト
+	//�꺃�깮�꺖�깉�꺁�궧�깉
 	@RequestMapping(value = "/ReportList", method = RequestMethod.GET)
 	public String getList2(Model model,@RequestParam(value="page", defaultValue="1") int page) {
 		logger.debug("pageNum:{}", page);
