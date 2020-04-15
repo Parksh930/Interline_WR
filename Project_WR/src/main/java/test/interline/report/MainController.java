@@ -37,8 +37,8 @@ public class MainController {
 	
 	//ログインフォーム
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginForm() {
-
+	public String loginForm(HttpSession session) {
+		logger.debug("loginForm");
 		return "login";
 	}
 	
@@ -70,6 +70,7 @@ public class MainController {
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpSession session) {
 		logger.debug("logout");
+		session.removeAttribute("login_id");
 		session.invalidate();
 		
 		return "redirect:/";
