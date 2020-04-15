@@ -53,7 +53,7 @@ margin: 40px 0px 20px 25px;
 
 <c:if test='${sessionScope.user_inform.authority == "u"}'>
 <div id="menu_User">
-<span class="Main_userName">${sessionScope.login_id}さん</span>
+<span class="Main_userName">${sessionScope.user_inform.userName}さん</span>
 <span class="Main_logOut"><a href=./logout>ログアウト</a></span>
 <p class="User_writeReport"><a href="./writeReport">報告書作成</a></p>
 <p class="User_writeContinue"><a>作成続き</a></p>
