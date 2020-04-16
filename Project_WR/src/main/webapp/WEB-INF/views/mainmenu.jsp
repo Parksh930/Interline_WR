@@ -7,15 +7,14 @@
 <meta charset="UTF-8">
 <title>MainMenu</title>
 </head>
-
 <style>
 #menu_User{
-margin: 200px auto;
+margin: 100px auto;
 width: fit-content;
 }
 
 #menu_Admin{
-margin: 200px auto;
+margin: 100px auto;
 width: fit-content;
 }
 
@@ -48,9 +47,14 @@ margin: 20px 0px 20px 25px;
 margin: 40px 0px 20px 25px; 
 }
 
+#mainMenu_logo{
+display:block;
+margin: 100px auto;
+width:300px;
+}
 </style>
 <body>
-<img src="resources/img/interline_weeklyreport.png">
+<img src="resources/img/interline_weeklyreport.png" id="mainMenu_logo">
 <c:if test='${sessionScope.user_inform.authority == "u"}'>
 <div id="menu_User">
 <span class="Main_userName">${sessionScope.user_inform.userName}さん</span>
