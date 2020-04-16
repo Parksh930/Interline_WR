@@ -83,8 +83,8 @@
 	)
 </insert>
 
-<select id="readReportList" resultType="report_list" >
-select * from report_list where reportNum = #{reportNum}
+<select id="readReportList" resultType="report_list" parameterType="report_list">
+select * from report_list where User_Num = #{User_Num} and User_Name = #{User_Name} ORDER BY sendDays DESC limit 1
 
 </select>
 </mapper>
