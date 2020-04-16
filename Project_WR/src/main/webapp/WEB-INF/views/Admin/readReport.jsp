@@ -29,16 +29,10 @@
 
 <!-- <script type="text/javascript" src="http://192.168.0.103:8888/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script> -->
 
-
-
 <head>
 <title>ReadReport</title>
 </head>
 <body style="width: 98%; height: 98%">
-	<h1>OZ PAGE HTML!!!</h1>
-	<button type="button" onclick="pagechange()">button</button>
-
-
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
 
 	<script>
