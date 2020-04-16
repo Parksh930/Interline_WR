@@ -24,7 +24,7 @@
 	<foreach collection="list" item="content" separator=",">
 	(
 	
-		#get_seq('seq_report_main')
+		get_seq('seq_report_main')
 		,#{content.Report_Num}
 		,#{content.StartWork}
 		,#{content.EndWork}

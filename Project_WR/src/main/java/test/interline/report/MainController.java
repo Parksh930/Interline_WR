@@ -57,6 +57,7 @@ public class MainController {
 		if(user != null && user.getPassword().equals(login_pw)){
 			session.setAttribute("login_id", user.getUserId());
 			session.setAttribute("user_inform", user);
+			session.setAttribute("userName", user.getUserName());
 			session.setAttribute("mobileCheck", mobileCheck);
 			
 			return"redirect:/mainMenu";
