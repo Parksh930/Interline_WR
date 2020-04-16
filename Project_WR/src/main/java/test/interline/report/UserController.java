@@ -155,9 +155,8 @@ public class UserController {
 		
 		reportListVO report2 = new reportListVO();
 		report2 = dao.readReportList(report);
-		System.out.println("select value:" + report2);
+		System.out.println("select value:" + report2.getReportNum());
 		int reportNum= report2.getReportNum();
-		
 	
 		/*
 		"Report_Num":"",
@@ -166,6 +165,7 @@ public class UserController {
 		"ReportContents":"",
 		"DailyRemarks":""
 		*/
+		
 		JSONObject[] contents= {jsonContents.getJSONObject("mon"), jsonContents.getJSONObject("tue"), jsonContents.getJSONObject("wed"),jsonContents.getJSONObject("thu"), jsonContents.getJSONObject("fri")};
 		ArrayList<reportMainVO> reportMains=new ArrayList<reportMainVO>(); 
 		for(int i=0;i<contents.length;i++) {
