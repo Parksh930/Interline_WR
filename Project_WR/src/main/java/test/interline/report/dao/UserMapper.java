@@ -3,6 +3,7 @@ package test.interline.report.dao;
 import java.util.ArrayList;
 
 import test.interline.report.vo.reportListVO;
+import test.interline.report.vo.reportMainVO;
 
 public interface UserMapper {
 
@@ -11,7 +12,11 @@ public interface UserMapper {
 
 	boolean writeReportList(reportListVO report);
 
+
 	reportListVO readReportList(reportListVO report);
+
+	void writeReportMain(ArrayList<reportMainVO> reportMains);
+
 
 	//public int writeReport(ReportMain report);
 

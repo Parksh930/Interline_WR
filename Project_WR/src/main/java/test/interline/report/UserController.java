@@ -183,7 +183,7 @@ public class UserController {
 		 * 이거 db에 넣는거 좀 부탁드힙니다.
 		 */
 		
-		
+		dao.writeReportMain(reportMains);
 		
 		
 		logger.debug("loginForm");

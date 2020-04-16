@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import test.interline.report.vo.reportListVO;
+import test.interline.report.vo.reportMainVO;
 
 @Repository
 
@@ -27,8 +28,15 @@ public class UserDAO {
 		return mapper.writeReportList(report);
 	}
 
+
 	public reportListVO readReportList(reportListVO report) {
 		UserMapper mapper = session.getMapper(UserMapper.class);
 		return mapper.readReportList(report);
+	}
+
+	public void writeReportMain(ArrayList<reportMainVO> reportMains) {
+		UserMapper mapper = session.getMapper(UserMapper.class);
+		mapper.writeReportMain(reportMains);
+
 	}
 }
