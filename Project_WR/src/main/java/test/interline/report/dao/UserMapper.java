@@ -12,6 +12,8 @@ ArrayList<reportListVO> getMy_List();
 
 	boolean writeReportList(reportListVO report);
 
+	reportListVO readReportList(reportListVO report);
+
 	//public int writeReport(ReportMain report);
 
 }

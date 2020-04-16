@@ -92,13 +92,13 @@ public class UserController {
 	//저장으로   
 	//저장후는 메인메뉴로
 	@RequestMapping(value = "/submitReport", method = RequestMethod.GET)
-	public String submitReport(Model model, String submitJsonReport, String submitJsonContents) {
+	public String submitReport(Model model, String submitJsonReport, String submitJsonContents,HttpSession session) {
 		JSONObject jsonReport= new JSONObject(submitJsonReport);
 		JSONObject jsonContents= new JSONObject(submitJsonContents);
 		SimpleDateFormat dt = new SimpleDateFormat("yyyyy-mm-dd hh:mm");
 	
 		reportListVO report = new reportListVO();
-		report.setReportNum(Integer.parseInt(jsonReport.getString("User_Num")));
+		report.setUser_Num(Integer.parseInt(jsonReport.getString("User_Num")));  // setReportNum 을 setUser_Num 으로 고침 ohsaeam
 		report.setLocation(jsonReport.getString("location"));
 		try {
 			report.setStartWeek(new SimpleDateFormat("yyyy-MM-dd").parse(jsonReport.getString("StartWeek")));
@@ -109,13 +109,17 @@ public class UserController {
 		report.setWeeklyRemarks(jsonReport.getString("WeeklyRemarks"));
 		
 		System.out.println(report);
-		
 		//여기까지 report 만들어짐.
 		
 		/*
 		 * 유진씨 여기에  report 가지고 
 		 * db에 reportList 테이블에 삽입하는거좀 해주실래요.
 		 */
+		
+		
+		String user_Name = (String)session.getAttribute("userName");  // username 은  json에 없길래 섹션에서 받아오기로 했습니다. oh
+		report.setUser_Name(user_Name);
+		//System.out.println("2: " + report);
 		boolean result = dao.writeReportList(report);
 		System.out.println("result: "+result);
 		
@@ -123,8 +127,13 @@ public class UserController {
 		 * 유진씨 여기에  방금 insert한 것 reportNum좀 받아오는 것 부탁드립니다.
 		 * 받아서 바로 아래 int reportNum= 여기에다좀 넣어주세요.
 		 */
-		int reportNum=0;
 		
+		reportListVO report2 = new reportListVO();
+		report2 = dao.readReportList(report);
+		System.out.println("select value:" + report2);
+		int reportNum= report2.getReportNum();
+		
+	
 		/*
 		"Report_Num":"",
 		"StartWork":"",

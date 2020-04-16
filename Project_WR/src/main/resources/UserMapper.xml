@@ -37,23 +37,23 @@
 <insert id="writeReportList" parameterType="report_list">
 	insert into report_list
 	(
-		User_Num
+		ReportNum
+		,User_Num
 	    ,User_Name
 	    ,Location
 	    ,StartWeek
 	    ,EndWeek
 	    ,WeeklyRemarks
-	    ,SendDays
 	)
 	values
 	(
-		#{User_Num}
+		get_seq("seq_report_list")
+		,#{User_Num}
 		,#{User_Name}
 		,#{Location}
 		,#{StartWeek}
 		,#{EndWeek}
 		,#{WeeklyRemarks}
-		,#{SendDays}
 	)
 </insert>
 
@@ -81,5 +81,8 @@
 	)
 </insert>
 
+<select id="readReportList" resultType="report_list" >
+select * from report_list where reportNum = #{reportNum}
 
+</select>
 </mapper>
