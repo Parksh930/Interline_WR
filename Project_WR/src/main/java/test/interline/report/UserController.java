@@ -58,11 +58,16 @@ public class UserController {
 		model.addAttribute("error",null);
 		
 		HttpSession session = request.getSession();
-		int checkMobile=Integer.parseInt((String)session.getAttribute("mobileCheck"));
-		System.out.println("모바일체크:"+checkMobile);
-		if(checkMobile==1) {
+		String getMobilecheck=(String)session.getAttribute("mobileCheck");
+		if(getMobilecheck.equals("")){
+			getMobilecheck="1";
+		}
+		System.out.println("모바일체크:"+getMobilecheck);
+		if(getMobilecheck.equals("1")) {
+			System.out.println("모바일로 연결");
 			return "User/writeReportMobile";
 		}
+		
 		return "User/writeReport";
 	}
 	
@@ -85,9 +90,13 @@ public class UserController {
 		model.addAttribute("error",null);
 		
 		HttpSession session = request.getSession();
-		int checkMobile=Integer.parseInt((String)session.getAttribute("mobileCheck"));
-		System.out.println("모바일체크:"+checkMobile);
-		if(checkMobile==1) {
+		String getMobilecheck=(String)session.getAttribute("mobileCheck");
+		if(getMobilecheck.equals("")){
+			getMobilecheck="1";
+		}
+		System.out.println("모바일체크:"+getMobilecheck);
+		if(getMobilecheck.equals("1")) {
+			System.out.println("모바일로 연결");
 			return "User/keepWritingMobile";
 		}
 		return "User/keepWriting";
