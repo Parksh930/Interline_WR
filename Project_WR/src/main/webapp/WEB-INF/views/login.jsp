@@ -7,7 +7,7 @@
 	<title>Login</title>
 </head>
 
-<script src="resources/js/jquery-3.4.1.min.js"></script>
+<script src="resources/js/jquery-2.0.3.min.js"></script>
 
 <script>
 <c:if test="${error!=null && error!=''}">alert("${error}");</c:if>
