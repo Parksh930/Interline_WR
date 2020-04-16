@@ -78,31 +78,26 @@ public class UserController {
 		return "User/keepWriting";
 	}
 	
-	//저장으로   저장후는 메인메뉴로
+	//저장으로   
+	//저장후는 메인메뉴로
 	@RequestMapping(value = "/submitReport", method = RequestMethod.GET)
 	public String submitReport(Model model, String submitJsonReport, String submitJsonContents) {
 		JSONObject jsonReport= new JSONObject(submitJsonReport);
 		JSONObject jsonContents= new JSONObject(submitJsonContents);
 		SimpleDateFormat dt = new SimpleDateFormat("yyyyy-mm-dd hh:mm");
-		/*
-		"User_Num":"",
-		"location":"",
-		"StartWeek":"",
-		"EndWeek":"",
-		"WeeklyRemarks":"",
-		"SendDays":""
-		 */
+	
 		reportListVO report = new reportListVO();
 		report.setReportNum(Integer.parseInt(jsonReport.getString("User_Num")));
 		report.setLocation(jsonReport.getString("location"));
 		try {
 			report.setStartWeek(new SimpleDateFormat("yyyy-MM-dd").parse(jsonReport.getString("StartWeek")));
 			report.setEndWeek(new SimpleDateFormat("yyyy-MM-dd").parse(jsonReport.getString("EndWeek")));
-			report.setSendDays(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(jsonReport.getString("SendDays")));
 		} catch (JSONException | ParseException e) {
 			e.printStackTrace();
 		}
 		report.setWeeklyRemarks(jsonReport.getString("WeeklyRemarks"));
+		
+		System.out.println(report);
 		
 		//여기까지 report 만들어짐.
 		
@@ -127,7 +122,7 @@ public class UserController {
 		"DailyRemarks":""
 		*/
 		JSONObject[] contents= {jsonContents.getJSONObject("mon"), jsonContents.getJSONObject("tue"), jsonContents.getJSONObject("wed"),jsonContents.getJSONObject("thu"), jsonContents.getJSONObject("fri")};
-		ArrayList<reportMainVO> reportMains=null; 
+		ArrayList<reportMainVO> reportMains=new ArrayList<reportMainVO>(); 
 		for(int i=0;i<contents.length;i++) {
 			reportMainVO reportMain = new reportMainVO();
 			reportMain.setDailyRemarks(contents[i].getString("DailyRemarks"));
@@ -141,6 +136,10 @@ public class UserController {
 			reportMain.setReport_Num(reportNum);
 			reportMain.setReportContents(contents[i].getString("ReportContents"));
 			reportMains.add(reportMain);
+		}
+		
+		for (reportMainVO reportMainVO : reportMains) {
+			System.out.println(reportMainVO);			
 		}
 		//jsonContents.getString("");
 		
@@ -156,6 +155,6 @@ public class UserController {
 		
 		logger.debug("loginForm");
 		model.addAttribute("error",null);
-		return "User/keepWriting";
+		return "mainmenu";
 	}
 }

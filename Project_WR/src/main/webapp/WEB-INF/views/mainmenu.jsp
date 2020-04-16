@@ -50,7 +50,7 @@ margin: 40px 0px 20px 25px;
 
 </style>
 <body>
-
+<img src="resources/img/interline_weeklyreport.png">
 <c:if test='${sessionScope.user_inform.authority == "u"}'>
 <div id="menu_User">
 <span class="Main_userName">${sessionScope.user_inform.userName}さん</span>
