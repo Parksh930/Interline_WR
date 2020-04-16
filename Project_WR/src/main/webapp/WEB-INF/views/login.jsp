@@ -7,7 +7,7 @@
 	<title>Login</title>
 </head>
 
-<script src="resources/js/jquery-3.4.1.min.js"></script>
+<script src="resources/js/jquery-2.0.3.min.js"></script>
 
 <script>
 <c:if test="${error!=null && error!=''}">alert("${error}");</c:if>
@@ -82,14 +82,12 @@ padding:0px 30px 0px 0px;
 padding: 20px 0px 0px 0px;
 }
 
-#login_logo{
-maring: 0px 0px 20px 0px;
-}
+
 </style>
 <body>
 
 <div id="login_div">
-<img src="resources/img/interline.jpg" width="150px" id="login_logo">
+<img src="resources/img/interline.png" id="login_logo">
 <table>
 <tr>
 <th colspan="2" class="login_th_title">
@@ -108,8 +106,22 @@ maring: 0px 0px 20px 0px;
 <tr>
 <td colspan="2" class="login_td_Submit"><input type="submit" value="ログイン" id="btn_login"></td>
 </tr>
+<input id="mobileCheck" type="hidden" name="mobileCheck" value="">
 </form>
 </table>
 </div>
+<script>
+	function isMobile() {
+	    var filter = "win16|win32|win64|mac|macintel";
+	    if( navigator.platform  ){
+	      if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
+	        return "1";
+	      }else{
+	        return "0";
+	      }
+	    }
+	  }
+	$('#mobileCheck').val(isMobile());
+</script> 
 </body>
 </html>
