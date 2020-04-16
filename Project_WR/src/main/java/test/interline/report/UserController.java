@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONException;
@@ -53,7 +54,18 @@ public class UserController {
 	
 	//신규작성페이지로
 	@RequestMapping(value = "/writeReport", method = RequestMethod.GET)
-	public String loginForm(HttpServletRequest request, Model model) {
+	public String loginForm(HttpServletRequest request, HttpServletResponse response, Model model) {
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		/*
+		 * response.setHeader("Access-Control-Allow-Credentials", "true");
+		 * response.setHeader("Access-Control-Allow-Methods",
+		 * "POST, GET, OPTIONS, DELETE"); response.setHeader("Access-Control-Max-Age",
+		 * "3600"); response.setHeader("Access-Control-Allow-Headers",
+		 * "Content-Type, Accept, X-Requested-With, remember-me");
+		 * response.setHeader("Content-Type", "application/json");
+		 * response.setHeader("Accept", "application/json");
+		 */
+		
 		logger.debug("loginForm");
 		model.addAttribute("error",null);
 		
