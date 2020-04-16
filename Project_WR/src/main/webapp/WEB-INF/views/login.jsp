@@ -101,8 +101,22 @@ padding: 20px 0px 0px 0px;
 <tr>
 <td colspan="2" class="login_td_Submit"><input type="submit" value="ログイン" id="btn_login"></td>
 </tr>
+<input id="MobileCheck" type="hidden" name="MobileCheck" value="">
 </form>
 </table>
 </div>
+<script>
+	function isMobile() {
+	    var filter = "win16|win32|win64|mac|macintel";
+	    if( navigator.platform  ){
+	      if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
+	        return "1";
+	      }else{
+	        return "0";
+	      }
+	    }
+	  }
+	$('#MobileCheck').val(isMobile());
+</script> 
 </body>
 </html>

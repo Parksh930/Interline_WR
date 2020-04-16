@@ -47,7 +47,7 @@ public class MainController {
 	
 	//ログイン処理
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(String login_id, String login_pw
+	public String login(String login_id, String login_pw, String mobileCheck
 					, HttpSession session,RedirectAttributes redirect) {
 		
 		logger.debug("login id:{}, pw:{}", login_id,login_pw);
@@ -57,6 +57,7 @@ public class MainController {
 		if(user != null && user.getPassword().equals(login_pw)){
 			session.setAttribute("login_id", user.getUserId());
 			session.setAttribute("user_inform", user);
+			session.setAttribute("mobileCheck", mobileCheck);
 			
 			return"redirect:/";
 
