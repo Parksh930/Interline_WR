@@ -110,11 +110,8 @@ public class UserController {
 		 * 유진씨 여기에  report 가지고 
 		 * db에 reportList 테이블에 삽입하는거좀 해주실래요.
 		 */
-		
-		
-		
-		
-		
+		boolean result = dao.writeReportList(report);
+		System.out.println("result: "+result);
 		
 		/*
 		 * 유진씨 여기에  방금 insert한 것 reportNum좀 받아오는 것 부탁드립니다.
