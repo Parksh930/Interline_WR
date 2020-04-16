@@ -42,7 +42,7 @@
 			oz.sendToActionScript("odi.TestProject2.args1",ReportdataVO);
 			return true;
 		}
-		start_ozjs("OZViewer", "http://serverComputer:8888/oz80/ozrviewer/");
+		start_ozjs("OZViewer", "http://serverComputer:8888/oz80/ozhviewer/");
 	</script>
 
 
