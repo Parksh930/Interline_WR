@@ -11,6 +11,7 @@
 <c:if test="${error!=null && error!=''}">alert("${error}");</c:if>
 
 $(function(){
+	
 	$("#login_form").submit(function(){
 		var id = $("#login_id").val();
 		var pw = $("#login_pw").val();
@@ -28,26 +29,77 @@ $(function(){
 		}
 		return false;
 	});
+
 });
 </script>
 <style>
+*{
+font-size: 20px;
+}
+
 #login_div{
 margin: 200px auto;
 width: fit-content;
 }
+
+tr{
+height: 35px;
+}
+
+input[type=text],input[type=password]{
+border: solid 2px rgb(127,127,127);
+width:230px;
+}
+
+input[type=submit]{
+background-color: rgb(0,32,96);
+border: solid 2px rgb(127,127,127);
+color:white;
+cursor: pointer;
+}
+
+.login_text{
+color:rgb(0,51,102);
+}
+
+.title_text{
+color:rgb(31,73,125);
+}
+
+.login_th_title{
+text-align: left;
+padding: 0px 0px 20px 0px;
+}
+
+.login_td_id,.login_td_pw{
+padding:0px 30px 0px 0px;
+}
+
+.login_td_Submit{
+padding: 20px 0px 0px 0px;
+}
 </style>
 <body>
+
 <div id="login_div">
 <table>
-<tr><th colspan="2" align="left">ログイン Weekly Report</th></tr>
+<tr>
+<th colspan="2" class="login_th_title">
+<span class="login_text">ログイン</span>
+<span class="title_text">WEEKLY REPORT</span></th>
+</tr>
 <form action="login" method="post" id="login_form">
 <tr>
-<td>ID</td>
-<td><input type="text" id="login_id" name="login_id"></td>
-</tr><tr>
-<td>PW</td><td><input type="password" id="login_pw" name="login_pw"></td>
+<td class="login_td_id">ID</td>
+<td class="login_td_id"><input type="text" id="login_id" name="login_id"></td>
 </tr>
-<tr><td colspan="2"><input type="submit" value="login" id="btn_login"></td></tr>
+<tr>
+<td class="login_td_pw">PW</td>
+<td class="login_td_pw"><input type="password" id="login_pw" name="login_pw"></td>
+</tr>
+<tr>
+<td colspan="2" class="login_td_Submit"><input type="submit" value="ログイン" id="btn_login"></td>
+</tr>
 </form>
 </table>
 </div>

@@ -1,6 +1,6 @@
 <%@page import="test.interline.report.vo.userVO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <!-- /******************************************************************************************
 	Name
 		oz_export.jsp
@@ -60,10 +60,12 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <%
-	
 
 	userVO user=(userVO)request.getSession().getAttribute("user_inform");
 	String userId=user.getUserId();
+	
+	String[] week=(String[])request.getAttribute("week");
+	String tempJson=(String)request.getAttribute("tempJson");
 	
 	String		serverUrl	= "http://serverComputer:8888/oz80/server";
 
@@ -131,15 +133,16 @@
 
 			// 폼패러미터 설정
 			exportMap.setProperty("connection.reportname", ozrName);
-			exportMap.setProperty("connection.pcount", Integer.toString(ozrParamCnt));
-			for (int i = 0; i < ozrParamCnt; i++)
-				exportMap.setProperty("connection.args" + Integer.toString(i + 1), ozrParamVal[i]);
+			exportMap.setProperty("connection.pcount", "3"); // 반드시 3도 스트링으로
+			exportMap.setProperty("connection.args1", "week1="+week[0]);
+			exportMap.setProperty("connection.args2", "week2="+week[1]);
+			exportMap.setProperty("connection.args3", "week3="+week[2]);
 
 			// ODI패러미터 설정
 			exportMap.setProperty("odi.odinames", odiName);
-			exportMap.setProperty("odi." + odiName + ".pcount", Integer.toString(odiParamCnt));
+			exportMap.setProperty("odi." + odiName + ".pcount", "1");  //반드시 둘다 스트링으로
 			for (int i = 0; i < odiParamCnt; i++)
-				exportMap.setProperty("odi." + odiName + ".args" + Integer.toString(i + 1), odiParamVal[i]);
+				exportMap.setProperty("odi." + odiName + ".args1", user.getUserNum()+"");
 
 			// 익스포트 정보
 			exportMap.setProperty("viewer.mode", "export");
@@ -150,15 +153,16 @@
 			exportMap.setProperty("tiff.encode", "JPG");
 			exportMap.setProperty("tiff.savemultipage", "true");
 			exportMap.setProperty("pdf.fontembedding", "true");
+			exportMap.setProperty("ozd.includeedits", "true");
 			
 			// 추출한 json 값을 보고서에 입히는 패러미터
-			exportMap.setProperty("connection.inputjson", "{'val1':3,'val2':'a'}");
+			exportMap.setProperty("connection.inputjson", tempJson);
 			
 			//String [] exportFormatA = exportFormat.split(",");	
 			
 			//exportMap.setProperty("word.filename", exportFileName+".doc");
 			exportMap.setProperty("ozd.filename", exportFileName+".ozd");   
-			
+			//exportMap.setProperty("pdf.filename", exportFileName+".pdf");
 			/*
 			for(int i = 0; i < exportFormatA.length; i++){
 				if(exportFormatA[i].equals("doc")){
@@ -194,6 +198,7 @@
 			out.println("<tr><td>보고서명</td><td>" + t.formName+"</td></tr>");
 			out.println("<tr><td>익스포트된 페이지 수 </td><td>" + t.pageCount+"</td></tr>");
 			out.println("</table>");
+			out.println("<div>"+week[0]+week[1]+week[2]+tempJson+"</div>");
 /*			
 			// 작업 등록
 			//taskID = scheduler.createTask(serverInfo, configMap, exportMap);
