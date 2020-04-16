@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONException;
@@ -52,9 +53,16 @@ public class UserController {
 	
 	//신규작성페이지로
 	@RequestMapping(value = "/writeReport", method = RequestMethod.GET)
-	public String loginForm(Model model) {
+	public String loginForm(HttpServletRequest request, Model model) {
 		logger.debug("loginForm");
 		model.addAttribute("error",null);
+		
+		HttpSession session = request.getSession();
+		int checkMobile=Integer.parseInt((String)session.getAttribute("mobileCheck"));
+		System.out.println("모바일체크:"+checkMobile);
+		if(checkMobile==1) {
+			return "User/writeReportMobile";
+		}
 		return "User/writeReport";
 	}
 	
@@ -72,9 +80,16 @@ public class UserController {
 	
 	//계속작성으로
 	@RequestMapping(value = "/keepWriting", method = RequestMethod.GET)
-	public String keepWriting(Model model) {
+	public String keepWriting(HttpServletRequest request, Model model) {
 		logger.debug("loginForm");
 		model.addAttribute("error",null);
+		
+		HttpSession session = request.getSession();
+		int checkMobile=Integer.parseInt((String)session.getAttribute("mobileCheck"));
+		System.out.println("모바일체크:"+checkMobile);
+		if(checkMobile==1) {
+			return "User/keepWritingMobile";
+		}
 		return "User/keepWriting";
 	}
 	
