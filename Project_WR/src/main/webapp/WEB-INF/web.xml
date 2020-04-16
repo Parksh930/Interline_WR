@@ -39,6 +39,10 @@
 		</init-param>
 	</filter>
 
+	<welcom-file-list>
+		<welcom-file>WEB-INF/views/login.jsp</welcom-file>
+	</welcom-file-list>
+
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>

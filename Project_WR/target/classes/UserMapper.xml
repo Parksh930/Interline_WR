@@ -10,7 +10,7 @@
 	</select>
 	
 	
-<insert id="writeReport" >
+<insert id="writeReport">
 	insert into report_main
 	(
 		report_main
@@ -30,6 +30,30 @@
 		,#{ReportContents}
 		,#{DailyRemarks}
 		,#{ContentNum}
+	)
+</insert>
+
+
+<insert id="writeReportList" parameterType="report_list">
+	insert into report_list
+	(
+		User_Num
+	    ,User_Name
+	    ,Location
+	    ,StartWeek
+	    ,EndWeek
+	    ,WeeklyRemarks
+	    ,SendDays
+	)
+	values
+	(
+		#{User_Num}
+		,#{User_Name}
+		,#{Location}
+		,#{StartWeek}
+		,#{EndWeek}
+		,#{WeeklyRemarks}
+		,#{SendDays}
 	)
 </insert>
 

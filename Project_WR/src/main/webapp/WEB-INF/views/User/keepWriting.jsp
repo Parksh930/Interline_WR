@@ -3,6 +3,7 @@
 <html style="height:100%">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<script src="resources/js/reportControl.js"></script>
 <script src="http://serverComputer:8888/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
 <link rel="stylesheet" href="http://serverComputer:8888/oz80/jquery-ui.css" type="text/css"/>
 <script src="http://serverComputer:8888/oz80/ozhviewer/jquery-ui.min.js"></script>
@@ -47,6 +48,8 @@
 				$('#submitJsonReport').val(/*제이슨스트링*/);
 				$('#submitJsonContents').val(/*제이슨스트링*/);
 				document.getElementById('submitReport').submit();
+			}else if(param3=="cancel"){
+				location.href="./";
 			}
 				
 		}

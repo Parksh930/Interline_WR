@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONException;
@@ -48,9 +49,16 @@ public class UserController {
 	
 	//신규작성페이지로
 	@RequestMapping(value = "/writeReport", method = RequestMethod.GET)
-	public String loginForm(Model model) {
+	public String loginForm(HttpServletRequest request, Model model) {
 		logger.debug("loginForm");
 		model.addAttribute("error",null);
+		
+		HttpSession session = request.getSession();
+		int checkMobile=Integer.parseInt((String)session.getAttribute("mobileCheck"));
+		System.out.println("모바일체크:"+checkMobile);
+		if(checkMobile==1) {
+			return "User/writeReportMobile";
+		}
 		return "User/writeReport";
 	}
 	
@@ -68,37 +76,39 @@ public class UserController {
 	
 	//계속작성으로
 	@RequestMapping(value = "/keepWriting", method = RequestMethod.GET)
-	public String keepWriting(Model model) {
+	public String keepWriting(HttpServletRequest request, Model model) {
 		logger.debug("loginForm");
 		model.addAttribute("error",null);
+		
+		HttpSession session = request.getSession();
+		int checkMobile=Integer.parseInt((String)session.getAttribute("mobileCheck"));
+		System.out.println("모바일체크:"+checkMobile);
+		if(checkMobile==1) {
+			return "User/keepWritingMobile";
+		}
 		return "User/keepWriting";
 	}
 	
-	//저장으로   저장후는 메인메뉴로
+	//저장으로   
+	//저장후는 메인메뉴로
 	@RequestMapping(value = "/submitReport", method = RequestMethod.GET)
 	public String submitReport(Model model, String submitJsonReport, String submitJsonContents) {
 		JSONObject jsonReport= new JSONObject(submitJsonReport);
 		JSONObject jsonContents= new JSONObject(submitJsonContents);
 		SimpleDateFormat dt = new SimpleDateFormat("yyyyy-mm-dd hh:mm");
-		/*
-		"User_Num":"",
-		"location":"",
-		"StartWeek":"",
-		"EndWeek":"",
-		"WeeklyRemarks":"",
-		"SendDays":""
-		 */
+	
 		reportListVO report = new reportListVO();
 		report.setReportNum(Integer.parseInt(jsonReport.getString("User_Num")));
 		report.setLocation(jsonReport.getString("location"));
 		try {
 			report.setStartWeek(new SimpleDateFormat("yyyy-MM-dd").parse(jsonReport.getString("StartWeek")));
 			report.setEndWeek(new SimpleDateFormat("yyyy-MM-dd").parse(jsonReport.getString("EndWeek")));
-			report.setSendDays(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(jsonReport.getString("SendDays")));
 		} catch (JSONException | ParseException e) {
 			e.printStackTrace();
 		}
 		report.setWeeklyRemarks(jsonReport.getString("WeeklyRemarks"));
+		
+		System.out.println(report);
 		
 		//여기까지 report 만들어짐.
 		
@@ -106,11 +116,8 @@ public class UserController {
 		 * 유진씨 여기에  report 가지고 
 		 * db에 reportList 테이블에 삽입하는거좀 해주실래요.
 		 */
-		
-		
-		
-		
-		
+		boolean result = dao.writeReportList(report);
+		System.out.println("result: "+result);
 		
 		/*
 		 * 유진씨 여기에  방금 insert한 것 reportNum좀 받아오는 것 부탁드립니다.
@@ -126,7 +133,7 @@ public class UserController {
 		"DailyRemarks":""
 		*/
 		JSONObject[] contents= {jsonContents.getJSONObject("mon"), jsonContents.getJSONObject("tue"), jsonContents.getJSONObject("wed"),jsonContents.getJSONObject("thu"), jsonContents.getJSONObject("fri")};
-		ArrayList<reportMainVO> reportMains=null; 
+		ArrayList<reportMainVO> reportMains=new ArrayList<reportMainVO>(); 
 		for(int i=0;i<contents.length;i++) {
 			reportMainVO reportMain = new reportMainVO();
 			reportMain.setDailyRemarks(contents[i].getString("DailyRemarks"));
@@ -140,6 +147,10 @@ public class UserController {
 			reportMain.setReport_Num(reportNum);
 			reportMain.setReportContents(contents[i].getString("ReportContents"));
 			reportMains.add(reportMain);
+		}
+		
+		for (reportMainVO reportMainVO : reportMains) {
+			System.out.println(reportMainVO);			
 		}
 		//jsonContents.getString("");
 		
@@ -155,6 +166,6 @@ public class UserController {
 		
 		logger.debug("loginForm");
 		model.addAttribute("error",null);
-		return "User/keepWriting";
+		return "mainmenu";
 	}
 }

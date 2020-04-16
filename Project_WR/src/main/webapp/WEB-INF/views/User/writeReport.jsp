@@ -4,6 +4,7 @@
 <html style="height:100%">
 <head>
 <meta charset="utf8" http-equiv="X-UA-Compatible" content="IE=edge"/>
+<script src="resources/js/reportControl.js"></script>
 <script src="http://serverComputer:8888/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
 <link rel="stylesheet" href="http://serverComputer:8888/oz80/ozhviewer/jquery-ui.css" type="text/css"/>
 <script src="http://serverComputer:8888/oz80/ozhviewer/jquery-ui.min.js"></script>
@@ -31,24 +32,7 @@
 	friday.setDate(friday.getDate()-7);
 	period.push(generateDate(monday,friday));
 	console.log(period);
-	//input Type (Date,Date)
-	//return Type (String)
-	//이번주의 월요일, 금요일 날짜를 받으면 'YYYY-MM-DD~YYYY-MM-DD'의 형식으로  반환한다. 
-	function generateDate(mon,fri){
-		var period="";
-		year1=mon.getFullYear();
-		month1=mon.getMonth()+1;
-		date1=mon.getDate();
-		if(month1<10){	month1="0"+month1;	}
-		if(date1<10){	date1="0"+date1;	}
-
-		year2=fri.getFullYear();
-		month2=fri.getMonth()+1;
-		date2=fri.getDate();
-		if(month2<10){	month2="0"+month2;	}
-		if(date2<10){	date2="0"+date2;	}
-		return year1+"-"+month1+"-"+date1+"~"+year2+"-"+month2+"-"+date2;
-	}
+	
 
  	//input null
  	//
@@ -83,10 +67,12 @@
 			console.log($('#tempJson').val());
 			document.getElementById('saveOZD').submit();
 		}else if(param3=="submit"){
-			//제이슨 변환
-			$('#submitJsonReport').val(/*제이슨스트링*/);
-			$('#submitJsonContents').val(/*제이슨스트링*/);
+			var jsonSet=makeJsonForSubmit(JSON.parse(param1));
+			$('#submitJsonReport').val(JSON.stringify(jsonSet[0]));
+			$('#submitJsonContents').val(JSON.stringify(jsonSet[1]));
 			document.getElementById('submitReport').submit();
+		}else if(param3=="cancel"){
+			location.href="./";
 		}
 	}
 </script>

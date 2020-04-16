@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import test.interline.report.dao.MainDAO;
 import test.interline.report.vo.userVO;
@@ -29,7 +30,8 @@ public class MainController {
 	 */
 	//メインメニュー
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String MainMenu(HttpSession session) {
+	public String MainMenu(Model model,HttpSession session) {
+		logger.debug("MainMenu");
 		session.getAttribute("login_id");
 		session.getAttribute("user_inform");
 		return "mainmenu";
@@ -39,12 +41,15 @@ public class MainController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginForm(HttpSession session) {
 		logger.debug("loginForm");
+		
 		return "login";
 	}
 	
 	//ログイン処理
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(Model model,String login_id, String login_pw, HttpSession session) {
+	public String login(String login_id, String login_pw, String mobileCheck
+					, HttpSession session,RedirectAttributes redirect) {
+		
 		logger.debug("login id:{}, pw:{}", login_id,login_pw);
 		
 		userVO user = dao.getUser(login_id);
@@ -52,17 +57,18 @@ public class MainController {
 		if(user != null && user.getPassword().equals(login_pw)){
 			session.setAttribute("login_id", user.getUserId());
 			session.setAttribute("user_inform", user);
+			session.setAttribute("mobileCheck", mobileCheck);
 			
 			return"redirect:/";
 
 		}
 		
 		if(user == null) {
-			model.addAttribute("error","存在しないIDです。");
+			redirect.addFlashAttribute("error","存在しないIDです。");
 		}else if(!user.getPassword().equals(login_pw)){
-			model.addAttribute("error","パスワードが一致しません。");
+			redirect.addFlashAttribute("error","パスワードが一致しません。");
 		}
-		return "login";
+		return "redirect:/login";
 	}
 	
 	
