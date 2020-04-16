@@ -19,8 +19,11 @@ public class UserDAO {
 		UserMapper mapper = session.getMapper(UserMapper.class);
 		
 		ArrayList<reportListVO> my_List = mapper.getMy_List();
-		
 		return my_List;
+	}
 
+	public boolean writeReportList(reportListVO report) {
+		UserMapper mapper = session.getMapper(UserMapper.class);
+		return mapper.writeReportList(report);
 	}
 }

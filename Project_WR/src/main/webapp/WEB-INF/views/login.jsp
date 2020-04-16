@@ -6,7 +6,9 @@
 <head>
 	<title>Login</title>
 </head>
+
 <script src="resources/js/jquery-3.4.1.min.js"></script>
+
 <script>
 <c:if test="${error!=null && error!=''}">alert("${error}");</c:if>
 
@@ -32,6 +34,7 @@ $(function(){
 
 });
 </script>
+
 <style>
 *{
 font-size: 20px;
@@ -78,11 +81,15 @@ padding:0px 30px 0px 0px;
 .login_td_Submit{
 padding: 20px 0px 0px 0px;
 }
+
+#login_logo{
+maring: 0px 0px 20px 0px;
+}
 </style>
 <body>
 
 <div id="login_div">
-<img src="resources/img/interline.jpg">
+<img src="resources/img/interline.jpg" width="150px" id="login_logo">
 <table>
 <tr>
 <th colspan="2" class="login_th_title">
