@@ -26,4 +26,9 @@ public class UserDAO {
 		UserMapper mapper = session.getMapper(UserMapper.class);
 		return mapper.writeReportList(report);
 	}
+
+	public reportListVO readReportList(reportListVO report) {
+		UserMapper mapper = session.getMapper(UserMapper.class);
+		return mapper.readReportList(report);
+	}
 }

@@ -11,6 +11,8 @@ public interface UserMapper {
 
 	boolean writeReportList(reportListVO report);
 
+	reportListVO readReportList(reportListVO report);
+
 	//public int writeReport(ReportMain report);
 
 }
