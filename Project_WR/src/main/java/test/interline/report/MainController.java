@@ -29,7 +29,7 @@ public class MainController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	//メインメニュー
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/mainMenu", method = RequestMethod.GET)
 	public String MainMenu(Model model,HttpSession session) {
 		logger.debug("MainMenu");
 		session.getAttribute("login_id");
@@ -57,9 +57,9 @@ public class MainController {
 		if(user != null && user.getPassword().equals(login_pw)){
 			session.setAttribute("login_id", user.getUserId());
 			session.setAttribute("user_inform", user);
-			session.setAttribute("userName", user.getUserName()); // ohsaeam이거 넣음
 			session.setAttribute("mobileCheck", mobileCheck);
-			return"redirect:/";
+			
+			return"redirect:/mainMenu";
 
 		}
 		
