@@ -1,5 +1,6 @@
 package test.interline.report;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -39,7 +40,8 @@ public class MainController {
 	
 	//ログインフォーム
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginForm(HttpSession session) {
+	public String loginForm(HttpSession session, HttpServletResponse response) {
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		logger.debug("loginForm");
 		
 		return "login";

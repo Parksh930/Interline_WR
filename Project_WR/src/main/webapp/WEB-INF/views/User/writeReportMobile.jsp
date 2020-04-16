@@ -7,22 +7,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
 <script src="resources/js/reportControl.js"></script>
-<script src="resources/ozjs/jquery-2.0.3.min.js"></script>
-<link rel="stylesheet" href="resources/ozjs/jquery-ui.css" type="text/css"/>
-<script src="resources/ozjs/jquery-ui.min.js"></script>
+<script src="http://serverComputer:8888/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
+<link rel="stylesheet" href="http://serverComputer:8888/oz80/ozhviewer/jquery-ui.css" type="text/css"/>
+<script src="http://serverComputer:8888/oz80/ozhviewer/jquery-ui.min.js"></script>
 
-<link rel="stylesheet" href="resources/ozjs/jquery.mobile-1.4.5.min.css"/>
-<script src="resources/ozjs/jquery.mobile-1.4.5.min.js"></script>
-<link rel="stylesheet" type="text/css" href="resources/ozjs/jquery.mobile.simpledialog.min.css"/>
-<script type="text/javascript" src="resources/ozjs/jquery.mobile.simpledialog2.min.js"></script>
+<link rel="stylesheet" href="http://serverComputer:8888/oz80/ozhviewer/jquery.mobile-1.4.5.min.css"/>
+<script src="http://serverComputer:8888/oz80/ozhviewer/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://serverComputer:8888/oz80/ozhviewer/jquery.mobile.simpledialog.min.css"/>
+<script type="text/javascript" src="http://serverComputer:8888/oz80/ozhviewer/jquery.mobile.simpledialog2.min.js"></script>
 
-<link rel="stylesheet" href="resources/ozjs/ui.dynatree.css" type="text/css"/>
-<script type="text/javascript" src="resources/ozjs/jquery.dynatree.js" charset="utf-8"></script>
-<script type="text/javascript" src="resources/ozjs/OZJSViewer.js" charset="utf-8"></script>
+<link rel="stylesheet" href="http://serverComputer:8888/oz80/ozhviewer/ui.dynatree.css" type="text/css"/>
+<script type="text/javascript" src="http://serverComputer:8888/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://serverComputer:8888/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
 <!-- If you want to run the HTML5SVG viewer please change the OZJSViewer.js to OZJSSVGViewer.js.
-<script type="text/javascript" src="resources/ozjs/OZJSSVGViewer.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://serverComputer:8888/oz80/ozhviewer/OZJSSVGViewer.js" charset="utf-8"></script>
 -->
-<script src="resources/ozjs/jquery.mouseSwipe.js" type="text/javascript"></script>
+<script src="http://serverComputer:8888/oz80/ozhviewer/jquery.mouseSwipe.js" type="text/javascript"></script>
 </head>
 <body style="height:100%">
 <div id='userNum' style="display:none;">${sessionScope.user_inform.userNum}</div>
