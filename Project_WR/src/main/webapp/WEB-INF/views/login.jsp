@@ -7,7 +7,7 @@
 	<title>Login</title>
 </head>
 
-<script src="resources/js/jquery-2.0.3.min.js"></script>
+<script src="http://serverComputer:8888/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
 
 <script>
 <c:if test="${error!=null && error!=''}">alert("${error}");</c:if>
@@ -87,7 +87,9 @@ padding: 20px 0px 0px 0px;
 <body>
 
 <div id="login_div">
+
 <img src="resources/img/interline.png" id="login_logo">
+
 <table>
 <tr>
 <th colspan="2" class="login_th_title">
