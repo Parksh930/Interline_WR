@@ -108,7 +108,7 @@ maring: 0px 0px 20px 0px;
 <tr>
 <td colspan="2" class="login_td_Submit"><input type="submit" value="ログイン" id="btn_login"></td>
 </tr>
-<input id="MobileCheck" type="hidden" name="MobileCheck" value="">
+<input id="mobileCheck" type="hidden" name="mobileCheck" value="">
 </form>
 </table>
 </div>
@@ -123,7 +123,7 @@ maring: 0px 0px 20px 0px;
 	      }
 	    }
 	  }
-	$('#MobileCheck').val(isMobile());
+	$('#mobileCheck').val(isMobile());
 </script> 
 </body>
 </html>
