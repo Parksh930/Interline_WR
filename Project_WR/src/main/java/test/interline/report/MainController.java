@@ -57,12 +57,8 @@ public class MainController {
 		if(user != null && user.getPassword().equals(login_pw)){
 			session.setAttribute("login_id", user.getUserId());
 			session.setAttribute("user_inform", user);
-<<<<<<< HEAD
 			session.setAttribute("userName", user.getUserName()); // ohsaeam이거 넣음
-=======
 			session.setAttribute("mobileCheck", mobileCheck);
-			
->>>>>>> f11f4e804d635fe52a1d3e58bc2301e729a5ae1f
 			return"redirect:/";
 
 		}

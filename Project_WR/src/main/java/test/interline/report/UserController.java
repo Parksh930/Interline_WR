@@ -113,6 +113,29 @@ public class UserController {
 		report.setWeeklyRemarks(jsonReport.getString("WeeklyRemarks"));
 		
 		System.out.println(report);
+		//여기까지 report 만들어짐.
+		
+		/*
+		 * 유진씨 여기에  report 가지고 
+		 * db에 reportList 테이블에 삽입하는거좀 해주실래요.
+		 */
+		
+		
+		String user_Name = (String)session.getAttribute("userName");  // username 은  json에 없길래 섹션에서 받아오기로 했습니다. oh
+		report.setUser_Name(user_Name);
+		//System.out.println("2: " + report);
+		boolean result = dao.writeReportList(report);
+		System.out.println("result: "+result);
+		
+		/*
+		 * 유진씨 여기에  방금 insert한 것 reportNum좀 받아오는 것 부탁드립니다.
+		 * 받아서 바로 아래 int reportNum= 여기에다좀 넣어주세요.
+		 */
+		
+		reportListVO report2 = new reportListVO();
+		report2 = dao.readReportList(report);
+		System.out.println("select value:" + report2);
+		int reportNum= report2.getReportNum();
 		
 	
 		/*
