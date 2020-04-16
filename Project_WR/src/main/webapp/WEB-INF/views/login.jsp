@@ -82,14 +82,12 @@ padding:0px 30px 0px 0px;
 padding: 20px 0px 0px 0px;
 }
 
-#login_logo{
-maring: 0px 0px 20px 0px;
-}
+
 </style>
 <body>
 
 <div id="login_div">
-<img src="resources/img/interline.jpg" width="150px" id="login_logo">
+<img src="resources/img/interline.png" id="login_logo">
 <table>
 <tr>
 <th colspan="2" class="login_th_title">
