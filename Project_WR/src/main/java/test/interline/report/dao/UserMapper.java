@@ -7,9 +7,8 @@ import test.interline.report.vo.reportMainVO;
 
 public interface UserMapper {
 
-	
-ArrayList<reportListVO> getMy_List();
 
+	ArrayList<reportListVO> getMy_List(int user_num);
 
 	boolean writeReportList(reportListVO report);
 

@@ -5,8 +5,8 @@
 
 <mapper namespace="test.interline.report.dao.UserMapper">
 
-<select id="getMy_List" resultType="report_list">
-		select * from report_list where user_num= ${UserNum}
+<select id="getMy_List" resultType="report_list" parameterType="int">
+		  select * from report_list where user_num = #{user_num} order by reportnum desc
 	</select>
 	
 	

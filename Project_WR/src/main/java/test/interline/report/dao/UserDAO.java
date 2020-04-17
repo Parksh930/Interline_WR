@@ -16,10 +16,10 @@ public class UserDAO {
 	@Autowired
 		SqlSession session;
 		
-	public ArrayList<reportListVO> getMy_List() {
+	public ArrayList<reportListVO> getMy_List(int user_num) {
 		UserMapper mapper = session.getMapper(UserMapper.class);
 		
-		ArrayList<reportListVO> my_List = mapper.getMy_List();
+		ArrayList<reportListVO> my_List = mapper.getMy_List(user_num);
 		return my_List;
 	}
 
