@@ -93,7 +93,7 @@ USE `interline_weeklyreport` ;
 
 DELIMITER $$
 USE `interline_weeklyreport`$$
-CREATE DEFINER=`root`@`localhost` FUNCTION `get_seq`(p_seq_name varchar(45)) RETURNS int(11)
+CREATE DEFINER=`hrhr`@`localhost` FUNCTION `get_seq`(p_seq_name varchar(45)) RETURNS int(11)
     READS SQL DATA
 begin
 declare result_id int;

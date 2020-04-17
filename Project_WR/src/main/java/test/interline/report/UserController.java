@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONException;
@@ -49,16 +50,32 @@ public class UserController {
 	
 	//신규작성페이지로
 	@RequestMapping(value = "/writeReport", method = RequestMethod.GET)
-	public String loginForm(HttpServletRequest request, Model model) {
+	public String loginForm(HttpServletRequest request, HttpServletResponse response, Model model) {
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		/*
+		 * response.setHeader("Access-Control-Allow-Credentials", "true");
+		 * response.setHeader("Access-Control-Allow-Methods",
+		 * "POST, GET, OPTIONS, DELETE"); response.setHeader("Access-Control-Max-Age",
+		 * "3600"); response.setHeader("Access-Control-Allow-Headers",
+		 * "Content-Type, Accept, X-Requested-With, remember-me");
+		 * response.setHeader("Content-Type", "application/json");
+		 * response.setHeader("Accept", "application/json");
+		 */
+		
 		logger.debug("loginForm");
 		model.addAttribute("error",null);
 		
 		HttpSession session = request.getSession();
-		int checkMobile=Integer.parseInt((String)session.getAttribute("mobileCheck"));
-		System.out.println("모바일체크:"+checkMobile);
-		if(checkMobile==1) {
+		String getMobilecheck=(String)session.getAttribute("mobileCheck");
+		if(getMobilecheck.equals("")){
+			getMobilecheck="1";
+		}
+		System.out.println("모바일체크:"+getMobilecheck);
+		if(getMobilecheck.equals("1")) {
+			System.out.println("모바일로 연결");
 			return "User/writeReportMobile";
 		}
+		
 		return "User/writeReport";
 	}
 	
@@ -81,9 +98,13 @@ public class UserController {
 		model.addAttribute("error",null);
 		
 		HttpSession session = request.getSession();
-		int checkMobile=Integer.parseInt((String)session.getAttribute("mobileCheck"));
-		System.out.println("모바일체크:"+checkMobile);
-		if(checkMobile==1) {
+		String getMobilecheck=(String)session.getAttribute("mobileCheck");
+		if(getMobilecheck.equals("")){
+			getMobilecheck="1";
+		}
+		System.out.println("모바일체크:"+getMobilecheck);
+		if(getMobilecheck.equals("1")) {
+			System.out.println("모바일로 연결");
 			return "User/keepWritingMobile";
 		}
 		return "User/keepWriting";
@@ -130,9 +151,8 @@ public class UserController {
 		
 		reportListVO report2 = new reportListVO();
 		report2 = dao.readReportList(report);
-		System.out.println("select value:" + report2);
+		System.out.println("select value:" + report2.getReportNum());
 		int reportNum= report2.getReportNum();
-		
 	
 		/*
 		"Report_Num":"",
@@ -141,6 +161,7 @@ public class UserController {
 		"ReportContents":"",
 		"DailyRemarks":""
 		*/
+		
 		JSONObject[] contents= {jsonContents.getJSONObject("mon"), jsonContents.getJSONObject("tue"), jsonContents.getJSONObject("wed"),jsonContents.getJSONObject("thu"), jsonContents.getJSONObject("fri")};
 		ArrayList<reportMainVO> reportMains=new ArrayList<reportMainVO>(); 
 		for(int i=0;i<contents.length;i++) {
@@ -170,7 +191,7 @@ public class UserController {
 		 * 이거 db에 넣는거 좀 부탁드힙니다.
 		 */
 		
-		
+		dao.writeReportMain(reportMains);
 		
 		
 		logger.debug("loginForm");

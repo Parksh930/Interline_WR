@@ -10,27 +10,29 @@
 	</select>
 	
 	
-<insert id="writeReport">
+<insert id="writeReportMain" parameterType="java.util.Map">
 	insert into report_main
 	(
-		report_main
-	    ,Report_Num
+		ContentNum
+		,Report_Num
 	    ,StartWork
 	    ,EndWork
 	    ,ReportContents
 	    ,DailyRemarks
-	    ,ContentNum
 	)
 	values
+	<foreach collection="list" item="content" separator=",">
 	(
-		#{report_main}
-		,#{Report_Num}
-		,#{StartWork}
-		,#{EndWork}
-		,#{ReportContents}
-		,#{DailyRemarks}
-		,#{ContentNum}
+	
+		get_seq('seq_report_main')
+		,#{content.Report_Num}
+		,#{content.StartWork}
+		,#{content.EndWork}
+		,#{content.ReportContents}
+		,#{content.DailyRemarks}
+
 	)
+	</foreach>
 </insert>
 
 
@@ -81,8 +83,8 @@
 	)
 </insert>
 
-<select id="readReportList" resultType="report_list" >
-select * from report_list where reportNum = #{reportNum}
+<select id="readReportList" resultType="report_list" parameterType="report_list">
+select * from report_list where User_Num = #{User_Num} and User_Name = #{User_Name} ORDER BY sendDays DESC limit 1
 
 </select>
 </mapper>

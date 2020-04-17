@@ -87,7 +87,9 @@ padding: 20px 0px 0px 0px;
 <body>
 
 <div id="login_div">
+
 <img src="resources/img/interline.png" id="login_logo">
+
 <table>
 <tr>
 <th colspan="2" class="login_th_title">

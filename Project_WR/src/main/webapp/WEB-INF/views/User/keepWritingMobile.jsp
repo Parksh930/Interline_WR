@@ -49,7 +49,7 @@
 				$('#submitJsonContents').val(/*제이슨스트링*/);
 				document.getElementById('submitReport').submit();
 			}else if(param3=="cancel"){
-				location.href="./mainMenu";
+				location.href="./";
 			}
 				
 		}
