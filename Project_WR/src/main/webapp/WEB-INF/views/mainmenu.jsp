@@ -63,7 +63,7 @@ margin: 40px 0px 20px 25px;
 <span class="Main_userName">${sessionScope.user_inform.userName}さん</span>
 <span class="Main_logOut"><a href=./logout>ログアウト</a></span>
 <p class="User_writeReport"><a href="./writeReport">報告書作成</a></p>
-<p class="User_writeContinue"><a href="./keepWriting">作成続き</a></p>
+<p class="User_writeContinue"><a>作成続き</a></p>
 <p class="User_reportList"><a href="./myReportList">報告書閲覧</a></p>
 </div>
 </c:if>

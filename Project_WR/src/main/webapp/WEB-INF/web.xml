@@ -44,7 +44,7 @@
 	</filter>
 
 	<welcom-file-list>
-		<welcom-file>WEB-INF/views/mainmenu.jsp</welcom-file>
+		<welcom-file>WEB-INF/views/login.jsp</welcom-file>
 	</welcom-file-list>
 
 	<filter-mapping>
