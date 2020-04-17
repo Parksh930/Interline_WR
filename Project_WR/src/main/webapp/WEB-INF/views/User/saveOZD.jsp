@@ -284,3 +284,6 @@
 
 	}
 %>
+<script>
+	location.href="./mainMenu"
+</script>

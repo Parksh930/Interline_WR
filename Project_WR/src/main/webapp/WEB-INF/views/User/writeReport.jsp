@@ -72,7 +72,7 @@
 			$('#submitJsonContents').val(JSON.stringify(jsonSet[1]));
 			document.getElementById('submitReport').submit();
 		}else if(param3=="cancel"){
-			location.href="./";
+			location.href="./mainMenu";
 		}
 	}
 </script>
