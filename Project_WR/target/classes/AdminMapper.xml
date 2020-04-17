@@ -5,7 +5,7 @@
 
 <mapper namespace="test.interline.report.dao.AdminMapper">
 	<select id="getAll_List" resultType="report_list">
-		select * from report_list
+		select * from report_list order by reportnum desc
 	</select>
 	
 	<select id="getTotal" resultType="int">

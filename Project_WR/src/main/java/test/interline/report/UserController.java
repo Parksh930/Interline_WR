@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import test.interline.report.dao.UserDAO;
 import test.interline.report.vo.reportListVO;
 import test.interline.report.vo.reportMainVO;
+import test.interline.report.vo.userVO;
 
 @Controller
 public class UserController {
@@ -44,11 +45,13 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/myReportList", method = RequestMethod.GET)
-	public String getList(Model model) {
-		ArrayList<reportListVO> my_List = dao.getMy_List();
+    public String getList(Model model, HttpSession session) {
+        userVO user = (userVO)session.getAttribute("user_inform");
+        logger.debug("reportNum:{}", user.getUserNum());
+        ArrayList<reportListVO> my_List = dao.getMy_List(user.getUserNum());
 		
 		model.addAttribute("report_my",my_List);
-		return "User/reportList";
+        return "User/myReportList";
 	}
 	
 	
