@@ -87,4 +87,8 @@
 select * from report_list where User_Num = #{User_Num} and User_Name = #{User_Name} ORDER BY sendDays DESC limit 1
 
 </select>
+
+<select id="getAll" resultType="int" parameterType="int">
+	select count(*) from report_list where user_num = #{user_num}
+</select>
 </mapper>
