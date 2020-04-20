@@ -11,6 +11,13 @@
 </head>
 <script>
 
+function pageBack(){
+
+	location.href = "mainMenu";
+	
+}
+
+
 function formSubmit(page){
 	var p = document.getElementById('page');
 	
@@ -70,6 +77,8 @@ color: white;
 
 a{
 text-decoration: none;
+
+
 }
 </style>
 
@@ -106,6 +115,9 @@ text-decoration: none;
 &nbsp;&nbsp;
 <a href="javascript:formSubmit(${navi.currentPage + 1})">▶</a> &nbsp;&nbsp;
 <a href="javascript:formSubmit(	${navi.currentPage + navi.pagePerGroup})">▷▷</a>
+</div>
+<div align="right">
+<button class="Read_Btn" type="button" onclick="pageBack()">メインメニューへ</button>
 </div>
 <input type = "hidden" name="page" id="page" value="1"/>
 </div>
