@@ -3,8 +3,6 @@ package test.interline.report;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,12 +14,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import test.interline.report.dao.UserDAO;
+import test.interline.report.util.PageNavigator;
 import test.interline.report.vo.reportListVO;
 import test.interline.report.vo.reportMainVO;
 import test.interline.report.vo.userVO;
@@ -31,26 +31,36 @@ public class UserController {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
+	private static final int countPerPage=10;		
+	private static final int pagePerGroup=10;	
 	@Autowired
 	UserDAO dao;
 	
-
-//@RequestMapping(value="writeReport", method=RequestMethod.POST)
-	
-	
 	@RequestMapping(value = "/myReport", method = RequestMethod.GET)
-	public String myReport(Model model, int reportNum) {
-		logger.debug("reportNum:{}", reportNum);
+	public String myReport(Model model, int rNum) {
+		logger.debug("rNum:{}", rNum);
+		model.addAttribute("rValue", rNum);
 		return "User/myReport";
 	}
 	
 	@RequestMapping(value = "/myReportList", method = RequestMethod.GET)
-    public String getList(Model model, HttpSession session) {
-        userVO user = (userVO)session.getAttribute("user_inform");
-        logger.debug("reportNum:{}", user.getUserNum());
-        ArrayList<reportListVO> my_List = dao.getMy_List(user.getUserNum());
+    public String getList(Model model, @RequestParam(value="pg", defaultValue="1") int pg, HttpSession session) {
+		logger.debug("pgNum:{}", pg);
+		userVO vo = (userVO)session.getAttribute("user_inform");
+		int user_num = vo.getUserNum();
+		int all = dao.getAll(user_num);
+		PageNavigator pn = new PageNavigator(countPerPage, pagePerGroup, pg, all);
 		
-		model.addAttribute("report_my",my_List);
+		ArrayList<reportListVO> my_list = dao.getMy_List(pn.getStartRecord(), pn.getCountPerPage(),user_num);
+		
+		model.addAttribute("pn", pn);
+		model.addAttribute("report_my",my_list);
+		
+		
+       // userVO user = (userVO)session.getAttribute("user_inform");
+    //    logger.debug("reportNum:{}", user.getUserNum());
+  //     ArrayList<reportListVO> my_List = dao.getMy_List(user.getUserNum());
+		
         return "User/myReportList";
 	}
 	
