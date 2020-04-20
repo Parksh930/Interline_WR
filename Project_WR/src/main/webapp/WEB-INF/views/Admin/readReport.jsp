@@ -27,7 +27,7 @@
 <body style="width: 98%; height: 98%">
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
 
-	<script>
+	<script> 
 
 	var ReportdataVO = "Reportdata="+"${ReportNumValue}";
 	
@@ -37,6 +37,7 @@
 			oz.sendToActionScript("connection.servlet",
 					"http://serverComputer:8888/oz80/server");
 			oz.sendToActionScript("connection.reportname", "OSA/interlineTest.ozr");
+			oz.sendToActionScript("global.language", "ja");
 			oz.sendToActionScript("odi.odinames", "interlineTest");
 			oz.sendToActionScript("odi.interlineTest.pcount","1");
 			oz.sendToActionScript("odi.interlineTest.args1",ReportdataVO);
