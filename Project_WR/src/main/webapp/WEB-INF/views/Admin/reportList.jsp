@@ -17,7 +17,6 @@ function pageBack(){
 	
 }
 
-
 function formSubmit(page){
 	var p = document.getElementById('page');
 	
