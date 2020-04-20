@@ -36,7 +36,7 @@
 			oz = document.getElementById("OZViewer");
 			oz.sendToActionScript("connection.servlet",
 					"http://serverComputer:8888/oz80/server");
-			oz.sendToActionScript("connection.reportname", "OSA/report3.ozr");
+			oz.sendToActionScript("connection.reportname", "OSA/interlineTest.ozr");
 			oz.sendToActionScript("odi.odinames", "TestProject2");
 			oz.sendToActionScript("odi.TestProject2.pcount","1");
 			oz.sendToActionScript("odi.TestProject2.args1",ReportdataVO);
