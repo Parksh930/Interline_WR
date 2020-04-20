@@ -22,7 +22,7 @@ function formSubmit(page){
 	
 	p.value=page;
 							
-	document.location.href = "ReportList?page=" + p.value;
+	document.location.href = "reportList?page=" + p.value;
 }
 </script>
 
@@ -98,7 +98,7 @@ text-decoration: none;
 <td class="Reportlist_Days"><fmt:formatDate pattern="yyyy.MM.dd" value="${report_List.startWeek}"/>
 ~
 <fmt:formatDate pattern="MM.dd" value="${report_List.endWeek}"/></td>
-<td class="Reportlist_reportNum"><a class="Read_Btn" href="ReadReport?reportNum=${report_List.reportNum}">閲覧</a></td>
+<td class="Reportlist_reportNum"><a class="Read_Btn" href="readReport?reportNum=${report_List.reportNum}">閲覧</a></td>
 </tr>
 </c:forEach>
 </table>

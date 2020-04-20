@@ -11,4 +11,23 @@
 	<select id="getTotal" resultType="int">
 		select count(*) from report_list
 	</select>
+	
+	<insert id="insertUser" parameterType="user">
+		insert into user_inform
+		(
+			UserNum
+			,UserId
+			,UserName
+			,Password
+			,Authority
+		) 
+		value
+		(
+			#{UserNum}
+			,#{UserId}
+			,#{UserName}
+			,#{Password}
+			,#{Authority}
+		)
+	</insert>
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import test.interline.report.vo.reportListVO;
+import test.interline.report.vo.userVO;
 
 @Repository
 public class AdminDAO {
@@ -31,6 +32,14 @@ public class AdminDAO {
 		int cnt = mapper.getTotal();
 		
 		return cnt;
+	}
+
+	public int insertUser(userVO user) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		
+		int n = mapper.insertUser(user);
+		
+		return n;
 	}
 
 }
