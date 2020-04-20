@@ -37,9 +37,9 @@ public class UserController {
 	UserDAO dao;
 	
 	@RequestMapping(value = "/myReport", method = RequestMethod.GET)
-	public String myReport(Model model, int rNum) {
-		logger.debug("rNum:{}", rNum);
-		model.addAttribute("rValue", rNum);
+	public String myReport(Model model, int reportNum) {
+		logger.debug("rNum:{}", reportNum);
+		model.addAttribute("ReportNumValue", reportNum);
 		return "User/myReport";
 	}
 	

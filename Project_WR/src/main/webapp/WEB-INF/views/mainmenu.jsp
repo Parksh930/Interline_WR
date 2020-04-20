@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MainMenu</title>
+	<title>MainMenu</title>
 </head>
 <style>
 #menu_User{
@@ -72,7 +73,8 @@ margin: 40px 0px 20px 25px;
 <div id="menu_Admin">
 <span class="Main_userName">管理者</span>
 <span class="Main_logOut"><a href=./logout>ログアウト</a></span>
-<p class="Admin_reportList"><a href=./ReportList>報告書リスト</a></p>
+<p class="Admin_reportList"><a href=./registerUser>社員登録</a></p>
+<p class="Admin_reportList"><a href=./reportList>報告書リスト</a></p>
 </div>
 </c:if>
 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import test.interline.report.dao.AdminDAO;
 import test.interline.report.util.PageNavigator;
 import test.interline.report.vo.reportListVO;
+import test.interline.report.vo.userVO;
 
 @Controller
 public class AdminController {
@@ -27,7 +28,7 @@ public class AdminController {
 	AdminDAO dao;
 	
 	//�꺃�깮�꺖�깉�굮沃���
-	@RequestMapping(value = "/ReadReport", method = RequestMethod.GET)
+	@RequestMapping(value = "/readReport", method = RequestMethod.GET)
 	public String readReport(Model model, int reportNum) {
 		logger.debug("reportNum:{}", reportNum);
 		model.addAttribute("ReportNumValue", reportNum); // 모델값
@@ -35,7 +36,7 @@ public class AdminController {
 	}
 	
 	//�꺃�깮�꺖�깉�꺁�궧�깉
-	@RequestMapping(value = "/ReportList", method = RequestMethod.GET)
+	@RequestMapping(value = "/reportList", method = RequestMethod.GET)
 	public String getList2(Model model,@RequestParam(value="page", defaultValue="1") int page) {
 		logger.debug("pageNum:{}", page);
 		
@@ -49,5 +50,25 @@ public class AdminController {
 		return "Admin/reportList";
 	}
 	
+	@RequestMapping(value="/registerUser", method=RequestMethod.GET)
+	public String insertUserForm() {
+		logger.debug("RegisterUser");
+		
+		return "Admin/registerUser";
+	}
 	
+	@RequestMapping(value="/registerUser", method=RequestMethod.POST)
+	public String insertUser(userVO user) {
+		logger.debug("insert_user:{}",user);
+		
+		 int result = dao.insertUser(user); 
+		 
+		 if(result == 1) {
+			 logger.debug("登録成功");
+		 }else {
+			 logger.debug("登録失敗");
+		 }
+		
+		return "redirect:/mainMenu";
+	}
 }

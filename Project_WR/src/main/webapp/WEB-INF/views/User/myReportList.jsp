@@ -11,6 +11,13 @@
 </head>
 
 <script>
+
+function pageBack(){
+
+	location.href = "mainMenu";
+	
+}
+
 function formSubmit(pg){
 	var pp = document.getElementById('pg');
 	
@@ -90,7 +97,7 @@ text-decoration: none;
 <td class="Reportlist_Days"><fmt:formatDate pattern="yyyy.MM.dd" value="${report_List.startWeek}"/>
 ~
 <fmt:formatDate pattern="MM.dd" value="${report_List.endWeek}"/></td>
-<td class="Reportlist_reportNum"><a class="Read_Btn" href="ReadReport?reportNum=${report_List.reportNum}">閲覧</a></td>
+<td class="Reportlist_reportNum"><a class="Read_Btn" href="myReport?reportNum=${report_List.reportNum}">閲覧</a></td>
 </tr>
 </c:forEach>
 </table>
@@ -107,6 +114,8 @@ text-decoration: none;
 <a href="javascript:formSubmit(${pn.currentPage + 1})">▶</a> &nbsp;&nbsp;
 <a href="javascript:formSubmit(	${pn.currentPage + pn.pagePerGroup})">▷▷</a>
 </div>
+<div align="right">
+<button class="Read_Btn" type="button" onclick="pageBack()">メインメニューへ</button>
 <input type = "hidden" name="page" id="page" value="1"/>
 </div>
 

@@ -7,7 +7,7 @@
 <script>
 	function pagechange() {
 
-		location.href = "ReportList";
+		location.href = "reportList";
 
 	}
 </script>

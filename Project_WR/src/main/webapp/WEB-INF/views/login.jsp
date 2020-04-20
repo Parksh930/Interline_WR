@@ -4,15 +4,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 	<title>Login</title>
 </head>
 
-<script src="resources/js/jquery-2.0.3.min.js"></script>
+<script src="<c:url value = 'resources/js/jquery-2.0.3.min.js'/>"></script>
 
 <script>
 <c:if test="${error!=null && error!=''}">alert("${error}");</c:if>
 
-$(function(){
+$(document).ready(function(){
 	
 	$("#login_form").submit(function(){
 		var id = $("#login_id").val();
@@ -88,7 +89,7 @@ padding: 20px 0px 0px 0px;
 
 <div id="login_div">
 
-<img src="resources/img/interline.png" id="login_logo">
+<img src="<c:url value = 'resources/img/interline.png'/>" id="login_logo">
 
 <table>
 <tr>
