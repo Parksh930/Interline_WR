@@ -26,6 +26,7 @@ public class MainController {
 	@Autowired
 	MainDAO dao;
 	
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.interline.report.dao.UserMapper">
+
+<select id="getMy_List" resultType="report_list" parameterType="int">
+		  select * from report_list where user_num = #{user_num} order by reportnum desc
+	</select>
+	
+	
+<insert id="writeReportMain" parameterType="java.util.Map">
+	insert into report_main
+	(
+		ContentNum
+		,Report_Num
+	    ,StartWork
+	    ,EndWork
+	    ,ReportContents
+	    ,DailyRemarks
+	)
+	values
+	<foreach collection="list" item="content" separator=",">
+	(
+	
+		get_seq('seq_report_main')
+		,#{content.Report_Num}
+		,#{content.StartWork}
+		,#{content.EndWork}
+		,#{content.ReportContents}
+		,#{content.DailyRemarks}
+
+	)
+	</foreach>
+</insert>
+
+
+<insert id="writeReportList" parameterType="report_list">
+	insert into report_list
+	(
+		ReportNum
+		,User_Num
+	    ,User_Name
+	    ,Location
+	    ,StartWeek
+	    ,EndWeek
+	    ,WeeklyRemarks
+	)
+	values
+	(
+		get_seq("seq_report_list")
+		,#{User_Num}
+		,#{User_Name}
+		,#{Location}
+		,#{StartWeek}
+		,#{EndWeek}
+		,#{WeeklyRemarks}
+	)
+</insert>
+
+
+<insert id="keepWriting" >
+	insert into report_main
+	(
+		report_main
+	    ,Report_Num
+	    ,StartWork
+	    ,EndWork
+	    ,ReportContents
+	    ,DailyRemarks
+	    ,ContentNum
+	)
+	values
+	(
+		#{report_main}
+		,#{Report_Num}
+		,#{StartWork}
+		,#{EndWork}
+		,#{ReportContents}
+		,#{DailyRemarks}
+		,#{ContentNum}
+	)
+</insert>
+
+<select id="readReportList" resultType="report_list" parameterType="report_list">
+select * from report_list where User_Num = #{User_Num} and User_Name = #{User_Name} ORDER BY sendDays DESC limit 1
+
+</select>
+
+<select id="getAll" resultType="int" parameterType="int">
+	select count(*) from report_list where user_num = #{user_num}
+</select>
+</mapper>
