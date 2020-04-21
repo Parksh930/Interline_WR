@@ -56,7 +56,7 @@ margin: 40px 0px 20px 25px;
 <body>
 
 <div id="mainmenu_a_img"><a href="/report/main/mainMenu">
-<img src="resources/img/interline_weeklyreport.png" id="mainMenu_logo">
+<img src="../resources/img/interline_weeklyreport.png" id="mainMenu_logo">
 </a></div>
 
 <c:if test='${sessionScope.user_inform.authority == "u"}'>

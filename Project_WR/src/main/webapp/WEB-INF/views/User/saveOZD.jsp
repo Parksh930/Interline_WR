@@ -285,5 +285,5 @@
 	}
 %>
 <script>
-	location.href="./mainMenu"
+	location.href="../main/mainMenu"
 </script>

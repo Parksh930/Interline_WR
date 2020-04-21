@@ -96,7 +96,7 @@ function makeJsonForSubmit(oriJson){
 	reportJson.WeeklyRemarks=oriJson.weeklyRemarks;
 	reportJson.SendDays=day;
 	
-	alert(JSON.stringify(reportJson));
+	
 	//여기까지 report
 	
 	
