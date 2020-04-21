@@ -27,7 +27,7 @@
 <body style="width: 98%; height: 98%">
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
 
-	<script>
+	<script> 
 
 	var ReportdataVO = "Reportdata="+"${ReportNumValue}";
 	
