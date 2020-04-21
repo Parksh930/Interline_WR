@@ -29,7 +29,9 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			
-			<mvc:mapping path="/**"/>
+			<mvc:mapping path="/admin/**"/>
+	        <mvc:mapping path="/user/**"/>
+	        <mvc:mapping path="/main/**"/>
 			<mvc:exclude-mapping path="/login"/>
 			
 			<beans:ref bean="loginInterceptor"/>
