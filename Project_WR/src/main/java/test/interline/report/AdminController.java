@@ -2,6 +2,9 @@ package test.interline.report;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +33,21 @@ public class AdminController {
 	
 	//�꺃�깮�꺖�깉�굮沃���
 	@RequestMapping(value = "/readReport", method = RequestMethod.GET)
-	public String readReport(Model model, int reportNum) {
+	public String readReport(Model model, int reportNum,HttpServletRequest request) {
 		logger.debug("reportNum:{}", reportNum);
 		model.addAttribute("ReportNumValue", reportNum); // 모델값
+		
+		HttpSession session = request.getSession();
+		String getMobilecheck=(String)session.getAttribute("mobileCheck");
+		if(getMobilecheck.equals("")){
+			getMobilecheck="1";
+		}
+		System.out.println("관리자모바일: "+getMobilecheck);
+		if(getMobilecheck.equals("1")) {
+			System.out.println("관리자모바일접속");
+			return "Admin/readReportMobile";
+		}
+		
 		return "Admin/readReport";
 	}
 	
