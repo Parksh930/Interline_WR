@@ -24,7 +24,6 @@
 <body style="width:98%;height:98%">
 	<%@ page import="java.util.*"%>
 	<%@page import="test.interline.report.vo.userVO"%>
-	<%@ page contentType="text/html;charset=UTF-8" %>
 	<%request.setCharacterEncoding("UTF-8");%>
 	<%userVO user=(userVO)request.getSession().getAttribute("user_inform"); %>
 	<div id='userNum' ><%out.println(user.getUserId()); %></div>
