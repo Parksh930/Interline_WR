@@ -97,6 +97,7 @@ function makeJsonForSubmit(oriJson){
 	reportJson.SendDays=day;
 	
 	
+	
 	//여기까지 report
 	
 	

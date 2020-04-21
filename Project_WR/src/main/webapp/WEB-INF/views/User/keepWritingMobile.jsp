@@ -26,6 +26,7 @@
 	<script src="http://192.168.1.79:8888/oz80/ozhviewer/jquery.mouseSwipe.js" type="text/javascript"></script>
 	<script src="../resources/js/reportControl.js"></script>
 </head>
+
 <body style="width:98%;height:98%">
 	<%@ page import="java.util.*"%>
 	<%@page import="test.interline.report.vo.userVO"%>

@@ -75,6 +75,7 @@ public class MainController {
 	}
 	
 	
+	
 	//ログアウト
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpSession session) {

@@ -19,6 +19,7 @@
 <script type="text/javascript" src="http://serverComputer:8888/oz80/ozhviewer/OZJSSVGViewer.js" charset="utf-8"></script>
 -->
 </head>
+
 <body style="width:98%;height:98%">
 	<%@ page import="java.util.*"%>
 	<%@page import="test.interline.report.vo.userVO"%>

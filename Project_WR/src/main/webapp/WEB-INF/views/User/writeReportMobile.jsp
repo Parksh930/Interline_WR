@@ -22,6 +22,7 @@
 	<script src="http://192.168.1.79:8888/oz80/ozhviewer/jquery.mouseSwipe.js" type="text/javascript"></script>
 	<script src="../resources/js/reportControl.js"></script>
 </head>
+
 <body style="height:100%">
 <div id='userNum' style="display:none;">${sessionScope.user_inform.userNum}</div>
 <div id="OZViewer" style="width:100%;height:100%;overflow:hidden"></div>

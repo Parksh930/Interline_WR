@@ -12,6 +12,10 @@
 	}
 </script>
 
+
+
+<head>
+<title>ReadReport</title>
 <meta charset="utf8" http-equiv="X-UA-Compatible" content="IE=edge"/>
 <script src="http://serverComputer:8888/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
 <link rel="stylesheet" href="http://serverComputer:8888/oz80/ozhviewer/jquery-ui.css" type="text/css"/>
@@ -20,9 +24,6 @@
 <script type="text/javascript" src="http://serverComputer:8888/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://serverComputer:8888/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
 <!-- <script type="text/javascript" src="http://192.168.0.103:8888/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script> -->
-
-<head>
-<title>ReadReport</title>
 </head>
 <body style="width: 98%; height: 98%">
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>

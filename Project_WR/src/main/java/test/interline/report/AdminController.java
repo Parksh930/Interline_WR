@@ -57,6 +57,7 @@ public class AdminController {
 		return "Admin/registerUser";
 	}
 	
+	
 	@RequestMapping(value="/admin/registerUser", method=RequestMethod.POST)
 	public String insertUser(userVO user) {
 		logger.debug("insert_user:{}",user);

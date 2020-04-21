@@ -160,10 +160,7 @@ public class UserController {
 		System.out.println(report);
 		//여기까지 report 만들어짐.
 		
-		/*
-		 * 유진씨 여기에  report 가지고 
-		 * db에 reportList 테이블에 삽입하는거좀 해주실래요.
-		 */
+		
 		
 		
 		String user_Name = (String)session.getAttribute("userName");  // username 은  json에 없길래 섹션에서 받아오기로 했습니다. oh
@@ -172,23 +169,14 @@ public class UserController {
 		boolean result = dao.writeReportList(report);
 		System.out.println("result: "+result);
 		
-		/*
-		 * 유진씨 여기에  방금 insert한 것 reportNum좀 받아오는 것 부탁드립니다.
-		 * 받아서 바로 아래 int reportNum= 여기에다좀 넣어주세요.
-		 */
+	
 		
 		reportListVO report2 = new reportListVO();
 		report2 = dao.readReportList(report);
 		System.out.println("select value:" + report2.getReportNum());
 		int reportNum= report2.getReportNum();
 	
-		/*
-		"Report_Num":"",
-		"StartWork":"",
-		"EndWork":"",
-		"ReportContents":"",
-		"DailyRemarks":""
-		*/
+		
 		
 		JSONObject[] contents= {jsonContents.getJSONObject("mon"), jsonContents.getJSONObject("tue"), jsonContents.getJSONObject("wed"),jsonContents.getJSONObject("thu"), jsonContents.getJSONObject("fri")};
 		ArrayList<reportMainVO> reportMains=new ArrayList<reportMainVO>(); 
@@ -214,10 +202,7 @@ public class UserController {
 		
 		
 		
-		/*
-		 * 승훈씨 reportMains 어레이리스트가  0번부터 4번까지 월화수목금  컨텐츠인데요
-		 * 이거 db에 넣는거 좀 부탁드힙니다.
-		 */
+	
 		
 		dao.writeReportMain(reportMains);
 		
