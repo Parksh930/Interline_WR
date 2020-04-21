@@ -34,13 +34,10 @@ public class AdminController {
 	AdminDAO dao;
 	
 	//�꺃�깮�꺖�깉�굮沃���
-<<<<<<< HEAD
+
 	@RequestMapping(value = "/admin/readReport", method = RequestMethod.GET)
-	public String readReport(Model model, int reportNum) {
-=======
-	@RequestMapping(value = "/readReport", method = RequestMethod.GET)
-	public String readReport(Model model, int reportNum,HttpServletRequest request) {
->>>>>>> 5f9943eba398674584dc4ea14ec9f2e28b7ea7da
+	public String readReport(Model model, int reportNum, HttpServletRequest request) {
+
 		logger.debug("reportNum:{}", reportNum);
 		model.addAttribute("ReportNumValue", reportNum); // 모델값
 		
@@ -80,12 +77,9 @@ public class AdminController {
 		return "Admin/registerUser";
 	}
 	
-<<<<<<< HEAD
-	
-	@RequestMapping(value="/admin/registerUser", method=RequestMethod.POST)
-=======
+
 	@ResponseBody
-	@RequestMapping(value="/check_multiple", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/check_multiple", method=RequestMethod.POST)
 	public String check_Multiple(int userNum, String userId) {
 		logger.debug("userNum:{},userId:{}",userNum,userId);
 		userVO check_result = null;
@@ -95,8 +89,7 @@ public class AdminController {
 		return "true";
 	}
 	
-	@RequestMapping(value="/registerUser", method=RequestMethod.POST)
->>>>>>> 5f9943eba398674584dc4ea14ec9f2e28b7ea7da
+	@RequestMapping(value="/admin/registerUser", method=RequestMethod.POST)
 	public String insertUser(userVO user) {
 		logger.debug("insert_user:{}",user);
 		
