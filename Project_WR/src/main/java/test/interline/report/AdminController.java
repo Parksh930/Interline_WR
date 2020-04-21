@@ -2,6 +2,10 @@ package test.interline.report;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import test.interline.report.dao.AdminDAO;
 import test.interline.report.util.PageNavigator;
@@ -29,10 +34,27 @@ public class AdminController {
 	AdminDAO dao;
 	
 	//�꺃�깮�꺖�깉�굮沃���
+<<<<<<< HEAD
 	@RequestMapping(value = "/admin/readReport", method = RequestMethod.GET)
 	public String readReport(Model model, int reportNum) {
+=======
+	@RequestMapping(value = "/readReport", method = RequestMethod.GET)
+	public String readReport(Model model, int reportNum,HttpServletRequest request) {
+>>>>>>> 5f9943eba398674584dc4ea14ec9f2e28b7ea7da
 		logger.debug("reportNum:{}", reportNum);
 		model.addAttribute("ReportNumValue", reportNum); // 모델값
+		
+		HttpSession session = request.getSession();
+		String getMobilecheck=(String)session.getAttribute("mobileCheck");
+		if(getMobilecheck.equals("")){
+			getMobilecheck="1";
+		}
+		System.out.println("관리자모바일: "+getMobilecheck);
+		if(getMobilecheck.equals("1")) {
+			System.out.println("관리자모바일접속");
+			return "Admin/readReportMobile";
+		}
+		
 		return "Admin/readReport";
 	}
 	
@@ -58,8 +80,23 @@ public class AdminController {
 		return "Admin/registerUser";
 	}
 	
+<<<<<<< HEAD
 	
 	@RequestMapping(value="/admin/registerUser", method=RequestMethod.POST)
+=======
+	@ResponseBody
+	@RequestMapping(value="/check_multiple", method=RequestMethod.POST)
+	public String check_Multiple(int userNum, String userId) {
+		logger.debug("userNum:{},userId:{}",userNum,userId);
+		userVO check_result = null;
+		check_result = dao.check_Multiple("check_num",userNum);
+		check_result = dao.check_Multiple("check_id",userId);
+		
+		return "true";
+	}
+	
+	@RequestMapping(value="/registerUser", method=RequestMethod.POST)
+>>>>>>> 5f9943eba398674584dc4ea14ec9f2e28b7ea7da
 	public String insertUser(userVO user) {
 		logger.debug("insert_user:{}",user);
 		
