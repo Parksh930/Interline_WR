@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="http://serverComputer:8888/oz80/ozhviewer/OZJSSVGViewer.js" charset="utf-8"></script>
 	-->
 </head>
+
 <body style="width:98%;height:98%">
 	<div id='userNum' style="display:none;">${sessionScope.user_inform.userNum}</div>
 	<div id="OZViewer" style="width:98%;height:98%"></div>

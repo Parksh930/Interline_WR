@@ -53,6 +53,7 @@ margin: 40px 0px 20px 25px;
     margin: 100px auto 0px;
 }
 </style>
+
 <body>
 
 <div id="mainmenu_a_img"><a href="/report/main/mainMenu">

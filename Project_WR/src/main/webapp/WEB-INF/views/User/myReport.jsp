@@ -13,7 +13,6 @@
 </script>
 
 
-
 <head>
 <title>ReadReport</title>
 <meta charset="utf8" http-equiv="X-UA-Compatible" content="IE=edge"/>

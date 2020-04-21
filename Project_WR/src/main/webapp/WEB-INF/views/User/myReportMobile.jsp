@@ -38,6 +38,7 @@
 	<script src="http://192.168.1.79:8888/oz80/ozhviewer/jquery.mouseSwipe.js" type="text/javascript"></script>
 </head>
 
+
 <body style="width: 98%; height: 98%">
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
 

@@ -76,6 +76,7 @@ public class UserController {
 	}
 	
 	
+	
 	//신규작성페이지로
 	@RequestMapping(value = "/user/writeReport", method = RequestMethod.GET)
 	public String loginForm(HttpServletRequest request, HttpServletResponse response, Model model) {

@@ -13,6 +13,7 @@
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css"/>
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
+	
 	<link rel="stylesheet" href="http://192.168.1.79:8888/oz80/ozhviewer/ui.dynatree.css" type="text/css"/>
 	<script type="text/javascript" src="http://192.168.1.79:8888/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
 	<script type="text/javascript" src="http://192.168.1.79:8888/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
