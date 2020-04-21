@@ -3,6 +3,9 @@
 <html style="height:100%">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 <script src="../resources/js/reportControl.js"></script>
 <script src="http://serverComputer:8888/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
 <link rel="stylesheet" href="http://serverComputer:8888/oz80/jquery-ui.css" type="text/css"/>
