@@ -37,9 +37,20 @@ public class UserController {
 	UserDAO dao;
 	
 	@RequestMapping(value = "/user/myReport", method = RequestMethod.GET)
-	public String myReport(Model model, int reportNum) {
+	public String myReport(HttpServletRequest request, Model model, int reportNum) {
 		logger.debug("rNum:{}", reportNum);
 		model.addAttribute("ReportNumValue", reportNum);
+		
+		HttpSession session = request.getSession();
+		String getMobilecheck=(String)session.getAttribute("mobileCheck");
+		if(getMobilecheck.equals("")){
+			getMobilecheck="1";
+		}
+		System.out.println("모바일체크:"+getMobilecheck);
+		if(getMobilecheck.equals("1")) {
+			System.out.println("모바일로 연결");
+			return "User/myReportMobile";
+		}
 		return "User/myReport";
 	}
 	
