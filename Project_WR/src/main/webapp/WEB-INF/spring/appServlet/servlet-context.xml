@@ -36,23 +36,12 @@
 
 	<mvc:interceptors>
 		<mvc:interceptor>
-<<<<<<< HEAD
-			
 			<mvc:mapping path="/admin/**"/>
 	        <mvc:mapping path="/user/**"/>
 	        <mvc:mapping path="/main/**"/>
 			<mvc:exclude-mapping path="/login"/>
 			
 			<beans:ref bean="loginInterceptor"/>
-=======
-
-			<mvc:mapping path="/admin/**" />
-			<mvc:mapping path="/user/**" />
-			<mvc:mapping path="/main/**" />
-			<mvc:exclude-mapping path="/login" />
-
-			<beans:ref bean="loginInterceptor" />
->>>>>>> 5f9943eba398674584dc4ea14ec9f2e28b7ea7da
 		</mvc:interceptor>
 	</mvc:interceptors>
 </beans:beans>
