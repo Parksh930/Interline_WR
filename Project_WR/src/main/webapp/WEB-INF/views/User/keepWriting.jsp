@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <html style="height:100%">
@@ -31,6 +33,7 @@
 			var oz;
 			oz = document.getElementById("OZViewer");
 			oz.sendToActionScript("connection.servlet","http://serverComputer:8888/oz80/server");
+			oz.sendToActionScript("connection.clientcachetype","none");
 			oz.sendToActionScript("connection.openfile","http://serverComputer:8888/ozsch80/Repository/ozd/"+userId+".ozd");
 			return true;
 		}

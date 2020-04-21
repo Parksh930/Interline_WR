@@ -16,66 +16,68 @@
 -->
 </head>
 <body style="width:98%;height:98%">
-<div id='userNum' style="display:none;">${sessionScope.user_inform.userNum}</div>
-<div id="OZViewer" style="width:98%;height:98%"></div>
-<script type="text/javascript" >
-	var today = new Date();
-	var day = today.getDay();
-	var period=[];
-	var monday = new Date(today.setDate(today.getDate()-(day-1)));
-	var friday = new Date(today.setDate(today.getDate()+4));
-	period.push(generateDate(monday,friday));
-	monday.setDate(monday.getDate()-7);
-	friday.setDate(friday.getDate()-7);
-	period.push(generateDate(monday,friday));
-	monday.setDate(monday.getDate()-7);
-	friday.setDate(friday.getDate()-7);
-	period.push(generateDate(monday,friday));
-	console.log(period);
-	
-
- 	//input null
- 	//
- 	//오즈를 뷰어호출 소스
-	function SetOZParamters_OZViewer(){
-		var userNum=$('#userNum').html();
-		var oz;
-		oz = document.getElementById("OZViewer");
-		oz.sendToActionScript("connection.servlet","http://serverComputer:8888/oz80/server");
-		oz.sendToActionScript("connection.reportname","weeklyReport.ozr");
-		oz.sendToActionScript("connection.pcount","3");
-		oz.sendToActionScript("connection.args1","week1="+period[0]);
-		oz.sendToActionScript("connection.args2","week2="+period[1]);
-		oz.sendToActionScript("connection.args3","week3="+period[2]);
-
-		oz.sendToActionScript("odi.odinames", "weeklyReport");
-		oz.sendToActionScript("odi.weeklyReport.pcount", "1");
-		oz.sendToActionScript("odi.weeklyReport.args1", "userNum="+userNum);
+	<div id='userNum' style="display:none;">${sessionScope.user_inform.userNum}</div>
+	<div id="OZViewer" style="width:98%;height:98%"></div>
+	<script type="text/javascript" >
+		var today = new Date();
+		var day = today.getDay();
+		var period=[];
+		var monday = new Date(today.setDate(today.getDate()-(day-1)));
+		var friday = new Date(today.setDate(today.getDate()+4));
+		period.push(generateDate(monday,friday));
+		monday.setDate(monday.getDate()-7);
+		friday.setDate(friday.getDate()-7);
+		period.push(generateDate(monday,friday));
+		monday.setDate(monday.getDate()-7);
+		friday.setDate(friday.getDate()-7);
+		period.push(generateDate(monday,friday));
+		console.log(period);
 		
-		return true;
-	}
-	start_ozjs("OZViewer","http://serverComputer:8888/oz80/ozhviewer/");
-	//input (string,string,string)
-	//return json
-	//오즈내의 버튼이 클릭되면 실행된다. 오즈에서 일률적으로 뿌려주는 데이터를 정리하는 함수
-	function OZUserEvent_OZViewer(param1, param2, param3) {
-		if(param3=="save"){
-			$('#tempJson').val(param1);
-			$('#week1').val(period[0]);
-			$('#week2').val(period[1]);
-			$('#week3').val(period[2]);
-			console.log($('#tempJson').val());
-			document.getElementById('saveOZD').submit();
-		}else if(param3=="submit"){
-			var jsonSet=makeJsonForSubmit(JSON.parse(param1));
-			$('#submitJsonReport').val(JSON.stringify(jsonSet[0]));
-			$('#submitJsonContents').val(JSON.stringify(jsonSet[1]));
-			document.getElementById('submitReport').submit();
-		}else if(param3=="cancel"){
-			location.href="../main/mainMenu";
+	
+	 	//input null
+	 	//
+	 	//오즈를 뷰어호출 소스
+		function SetOZParamters_OZViewer(){
+			var userNum=$('#userNum').html();
+			var oz;
+			oz = document.getElementById("OZViewer");
+			oz.sendToActionScript("connection.servlet","http://serverComputer:8888/oz80/server");
+			oz.sendToActionScript("connection.reportname","weeklyReport.ozr");
+			oz.sendToActionScript("connection.pcount","3");
+			oz.sendToActionScript("connection.args1","week1="+period[0]);
+			oz.sendToActionScript("connection.args2","week2="+period[1]);
+			oz.sendToActionScript("connection.args3","week3="+period[2]);
+	
+			oz.sendToActionScript("odi.odinames", "weeklyReport");
+			oz.sendToActionScript("odi.weeklyReport.pcount", "1");
+			oz.sendToActionScript("odi.weeklyReport.args1", "userNum="+userNum);
+			
+			return true;
 		}
-	}
-</script>
+		start_ozjs("OZViewer","http://serverComputer:8888/oz80/ozhviewer/");
+	
+		//input (string,string,string)
+		//return json
+		//오즈내의 버튼이 클릭되면 실행된다. 오즈에서 일률적으로 뿌려주는 데이터를 정리하는 함수
+		function OZUserEvent_OZViewer(param1, param2, param3) {
+			if(param3=="save"){
+				$('#tempJson').val(param1);
+				$('#week1').val(period[0]);
+				$('#week2').val(period[1]);
+				$('#week3').val(period[2]);
+				console.log($('#tempJson').val());
+				document.getElementById('saveOZD').submit();
+			}else if(param3=="submit"){
+				var jsonSet=makeJsonForSubmit(JSON.parse(param1));
+				$('#submitJsonReport').val(JSON.stringify(jsonSet[0]));
+				$('#submitJsonContents').val(JSON.stringify(jsonSet[1]));
+				document.getElementById('submitReport').submit();
+			}else if(param3=="cancel"){
+				location.href="../main/mainMenu";
+			}
+		}
+	</script>
+
 	<form id="saveOZD" action="saveOZD">
 		<input id="tempJson" type="hidden" name="tempJson" value="">
 		<input id="week1" type="hidden" name="week" value="">
