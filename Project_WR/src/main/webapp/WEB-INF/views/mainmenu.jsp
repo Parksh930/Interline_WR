@@ -55,7 +55,7 @@ margin: 40px 0px 20px 25px;
 </style>
 <body>
 
-<div id="mainmenu_a_img"><a href="/report/mainMenu">
+<div id="mainmenu_a_img"><a href="/report/main/mainMenu">
 <img src="resources/img/interline_weeklyreport.png" id="mainMenu_logo">
 </a></div>
 
@@ -63,9 +63,9 @@ margin: 40px 0px 20px 25px;
 <div id="menu_User">
 <span class="Main_userName">${sessionScope.user_inform.userName}さん</span>
 <span class="Main_logOut"><a href=./logout>ログアウト</a></span>
-<p class="User_writeReport"><a href="./writeReport">報告書作成</a></p>
-<p class="User_writeContinue"><a href="./keepWriting">作成続き</a></p>
-<p class="User_reportList"><a href="./myReportList">報告書閲覧</a></p>
+<p class="User_writeReport"><a href="../user/writeReport">報告書作成</a></p>
+<p class="User_writeContinue"><a href="../user/keepWriting">作成続き</a></p>
+<p class="User_reportList"><a href="../user/myReportList">報告書閲覧</a></p>
 </div>
 </c:if>
 
@@ -74,7 +74,7 @@ margin: 40px 0px 20px 25px;
 <span class="Main_userName">管理者</span>
 <span class="Main_logOut"><a href=./logout>ログアウト</a></span>
 <p class="Admin_reportList"><a href=./registerUser>社員登録</a></p>
-<p class="Admin_reportList"><a href=./reportList>報告書リスト</a></p>
+<p class="Admin_reportList"><a href=../admin/reportList>報告書リスト</a></p>
 </div>
 </c:if>
 

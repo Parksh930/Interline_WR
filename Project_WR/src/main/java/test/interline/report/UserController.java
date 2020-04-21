@@ -36,14 +36,14 @@ public class UserController {
 	@Autowired
 	UserDAO dao;
 	
-	@RequestMapping(value = "/myReport", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/myReport", method = RequestMethod.GET)
 	public String myReport(Model model, int reportNum) {
 		logger.debug("rNum:{}", reportNum);
 		model.addAttribute("ReportNumValue", reportNum);
 		return "User/myReport";
 	}
 	
-	@RequestMapping(value = "/myReportList", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/myReportList", method = RequestMethod.GET)
     public String getList(Model model, @RequestParam(value="pg", defaultValue="1") int pg, HttpSession session) {
 		logger.debug("pgNum:{}", pg);
 		userVO vo = (userVO)session.getAttribute("user_inform");
@@ -66,7 +66,7 @@ public class UserController {
 	
 	
 	//신규작성페이지로
-	@RequestMapping(value = "/writeReport", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/writeReport", method = RequestMethod.GET)
 	public String loginForm(HttpServletRequest request, HttpServletResponse response, Model model) {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		/*
@@ -97,7 +97,7 @@ public class UserController {
 	}
 	
 	//임시저장페이지로
-	@RequestMapping(value = "/saveOZD", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/saveOZD", method = RequestMethod.GET)
 	public String saveOZD(Model model, String tempJson ,String[] week) {
 		logger.debug("loginForm");
 		model.addAttribute("error",null);
@@ -109,7 +109,7 @@ public class UserController {
 	}
 	
 	//계속작성으로
-	@RequestMapping(value = "/keepWriting", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/keepWriting", method = RequestMethod.GET)
 	public String keepWriting(HttpServletRequest request, Model model) {
 		logger.debug("loginForm");
 		model.addAttribute("error",null);
@@ -129,7 +129,7 @@ public class UserController {
 	
 	//저장으로   
 	//저장후는 메인메뉴로
-	@RequestMapping(value = "/submitReport", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/submitReport", method = RequestMethod.GET)
 	public String submitReport(Model model, String submitJsonReport, String submitJsonContents,HttpSession session) {
 		JSONObject jsonReport= new JSONObject(submitJsonReport);
 		JSONObject jsonContents= new JSONObject(submitJsonContents);
