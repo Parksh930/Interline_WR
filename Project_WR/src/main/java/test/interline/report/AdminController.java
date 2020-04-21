@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import test.interline.report.dao.AdminDAO;
 import test.interline.report.util.PageNavigator;
@@ -55,6 +56,17 @@ public class AdminController {
 		logger.debug("RegisterUser");
 		
 		return "Admin/registerUser";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/check_multiple", method=RequestMethod.POST)
+	public String check_Multiple(int userNum, String userId) {
+		logger.debug("userNum:{},userId:{}",userNum,userId);
+		userVO check_result = null;
+		check_result = dao.check_Multiple("check_num",userNum);
+		check_result = dao.check_Multiple("check_id",userId);
+		
+		return "true";
 	}
 	
 	@RequestMapping(value="/registerUser", method=RequestMethod.POST)

@@ -12,6 +12,18 @@
 		select count(*) from report_list
 	</select>
 	
+	<select id = "check_Multiple" parameterType="map" resultType="user">
+		select * from user_inform where
+		<choose>
+			<when test='check_point != null and check_point == "check_num"'>
+				usernum = #{check_content}
+			</when>
+			<when test='check_point != null and check_point == "check_id"'>
+				userid = #{check_content}
+			</when>
+		</choose>
+	</select>
+	
 	<insert id="insertUser" parameterType="user">
 		insert into user_inform
 		(
