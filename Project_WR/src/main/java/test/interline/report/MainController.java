@@ -62,7 +62,7 @@ public class MainController {
 			session.setAttribute("userName", user.getUserName());
 			session.setAttribute("mobileCheck", mobileCheck);
 			
-			return"redirect:/mainMenu";
+			return"redirect:/main/mainMenu";
 
 		}
 		
