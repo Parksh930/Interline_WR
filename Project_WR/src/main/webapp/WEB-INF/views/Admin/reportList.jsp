@@ -12,24 +12,23 @@
 <script>
 
 function pageBack(){
-
 	location.href = "../main/mainMenu";
-	
 }
 
 function logout(){
-
-	location.href = "../main/logout";
-	
+	location.href = "logout";
 }
 
 function formSubmit(page){
 	var p = document.getElementById('page');
-	
 	p.value=page;
-							
 	document.location.href = "reportList?page=" + p.value;
 }
+/* function printAll(){
+	//location.href = "../admin/printAll?reportNum="+${report_List.reportNum};
+	location.href = "../admin/printAll?reportNum="+${report_List.reportNum};
+} */
+
 </script>
 
 <style>

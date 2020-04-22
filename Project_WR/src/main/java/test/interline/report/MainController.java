@@ -78,7 +78,7 @@ public class MainController {
 	
 	
 	//�꺆�궛�궋�궑�깉
-	@RequestMapping(value="/main/logout", method=RequestMethod.GET)
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpSession session) {
 		logger.debug("logout");
 		session.removeAttribute("login_id");
