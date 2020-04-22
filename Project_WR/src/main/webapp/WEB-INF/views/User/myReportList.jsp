@@ -24,7 +24,7 @@ function formSubmit(pg){
 	
 	pp.value=pg;
 							
-	document.location.href = "ReportList?pg=" + pp.value;
+	document.location.href = "myReport?pg=" + pp.value;
 }
 </script>
 
@@ -119,7 +119,7 @@ text-decoration: none;
 </div>
 <div align="right">
 <button class="Read_Btn" type="button" onclick="pageBack()">メインメニューへ</button>
-<input type = "hidden" name="page" id="page" value="1"/>
+<input type = "hidden" name="page" id="pg" value="1"/>
 </div>
 
 

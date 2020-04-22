@@ -58,6 +58,9 @@ public class UserController {
     public String getList(Model model, @RequestParam(value="pg", defaultValue="1") int pg, HttpSession session) {
 		logger.debug("pgNum:{}", pg);
 		userVO vo = (userVO)session.getAttribute("user_inform");
+		if(vo == null) {
+			return "login";
+		}
 		int user_num = vo.getUserNum();
 		int all = dao.getAll(user_num);
 		PageNavigator pn = new PageNavigator(countPerPage, pagePerGroup, pg, all);
