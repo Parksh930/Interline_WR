@@ -127,7 +127,7 @@ margin: 0px 0px 0px 20px;
 <a href="javascript:formSubmit(	${navi.currentPage + navi.pagePerGroup})">▷▷</a>
 </div>
 <div align="right">
-<<button class="Read_Btn" type="button" onclick="printAll()">全体閲覧</button>
+<button class="Read_Btn" type="button" onclick="printAll()">全体閲覧</button>
 <button class="Read_Btn" type="button" onclick="pageBack()">メインメニューへ</button>
 </div>
 <input type = "hidden" name="page" id="page" value="1"/>
