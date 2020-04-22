@@ -1,6 +1,7 @@
 package test.interline.report.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -40,6 +41,19 @@ public class AdminDAO {
 		int n = mapper.insertUser(user);
 		
 		return n;
+	}
+
+	public userVO check_Multiple(String check_point, Object check_content) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("check_point", check_point);
+		map.put("check_content", check_content);
+		
+		userVO check_reslut = null;
+		check_reslut = mapper.check_Multiple(map);
+		
+		return check_reslut;
 	}
 
 }

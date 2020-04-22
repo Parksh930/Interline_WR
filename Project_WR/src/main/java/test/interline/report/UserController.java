@@ -36,14 +36,25 @@ public class UserController {
 	@Autowired
 	UserDAO dao;
 	
-	@RequestMapping(value = "/myReport", method = RequestMethod.GET)
-	public String myReport(Model model, int reportNum) {
+	@RequestMapping(value = "/user/myReport", method = RequestMethod.GET)
+	public String myReport(HttpServletRequest request, Model model, int reportNum) {
 		logger.debug("rNum:{}", reportNum);
 		model.addAttribute("ReportNumValue", reportNum);
+		
+		HttpSession session = request.getSession();
+		String getMobilecheck=(String)session.getAttribute("mobileCheck");
+		if(getMobilecheck.equals("")){
+			getMobilecheck="1";
+		}
+		System.out.println("모바일체크:"+getMobilecheck);
+		if(getMobilecheck.equals("1")) {
+			System.out.println("모바일로 연결");
+			return "User/myReportMobile";
+		}
 		return "User/myReport";
 	}
 	
-	@RequestMapping(value = "/myReportList", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/myReportList", method = RequestMethod.GET)
     public String getList(Model model, @RequestParam(value="pg", defaultValue="1") int pg, HttpSession session) {
 		logger.debug("pgNum:{}", pg);
 		userVO vo = (userVO)session.getAttribute("user_inform");
@@ -65,8 +76,9 @@ public class UserController {
 	}
 	
 	
+	
 	//신규작성페이지로
-	@RequestMapping(value = "/writeReport", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/writeReport", method = RequestMethod.GET)
 	public String loginForm(HttpServletRequest request, HttpServletResponse response, Model model) {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		/*
@@ -97,7 +109,7 @@ public class UserController {
 	}
 	
 	//임시저장페이지로
-	@RequestMapping(value = "/saveOZD", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/saveOZD", method = RequestMethod.GET)
 	public String saveOZD(Model model, String tempJson ,String[] week) {
 		logger.debug("loginForm");
 		model.addAttribute("error",null);
@@ -109,7 +121,7 @@ public class UserController {
 	}
 	
 	//계속작성으로
-	@RequestMapping(value = "/keepWriting", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/keepWriting", method = RequestMethod.GET)
 	public String keepWriting(HttpServletRequest request, Model model) {
 		logger.debug("loginForm");
 		model.addAttribute("error",null);
@@ -129,7 +141,7 @@ public class UserController {
 	
 	//저장으로   
 	//저장후는 메인메뉴로
-	@RequestMapping(value = "/submitReport", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/submitReport", method = RequestMethod.GET)
 	public String submitReport(Model model, String submitJsonReport, String submitJsonContents,HttpSession session) {
 		JSONObject jsonReport= new JSONObject(submitJsonReport);
 		JSONObject jsonContents= new JSONObject(submitJsonContents);
@@ -149,10 +161,7 @@ public class UserController {
 		System.out.println(report);
 		//여기까지 report 만들어짐.
 		
-		/*
-		 * 유진씨 여기에  report 가지고 
-		 * db에 reportList 테이블에 삽입하는거좀 해주실래요.
-		 */
+		
 		
 		
 		String user_Name = (String)session.getAttribute("userName");  // username 은  json에 없길래 섹션에서 받아오기로 했습니다. oh
@@ -161,23 +170,14 @@ public class UserController {
 		boolean result = dao.writeReportList(report);
 		System.out.println("result: "+result);
 		
-		/*
-		 * 유진씨 여기에  방금 insert한 것 reportNum좀 받아오는 것 부탁드립니다.
-		 * 받아서 바로 아래 int reportNum= 여기에다좀 넣어주세요.
-		 */
+	
 		
 		reportListVO report2 = new reportListVO();
 		report2 = dao.readReportList(report);
 		System.out.println("select value:" + report2.getReportNum());
 		int reportNum= report2.getReportNum();
 	
-		/*
-		"Report_Num":"",
-		"StartWork":"",
-		"EndWork":"",
-		"ReportContents":"",
-		"DailyRemarks":""
-		*/
+		
 		
 		JSONObject[] contents= {jsonContents.getJSONObject("mon"), jsonContents.getJSONObject("tue"), jsonContents.getJSONObject("wed"),jsonContents.getJSONObject("thu"), jsonContents.getJSONObject("fri")};
 		ArrayList<reportMainVO> reportMains=new ArrayList<reportMainVO>(); 
@@ -203,10 +203,7 @@ public class UserController {
 		
 		
 		
-		/*
-		 * 승훈씨 reportMains 어레이리스트가  0번부터 4번까지 월화수목금  컨텐츠인데요
-		 * 이거 db에 넣는거 좀 부탁드힙니다.
-		 */
+	
 		
 		dao.writeReportMain(reportMains);
 		

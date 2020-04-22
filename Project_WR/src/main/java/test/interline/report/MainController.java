@@ -18,6 +18,7 @@ import test.interline.report.vo.userVO;
 /**
  * Handles requests for the application home page.
  */
+
 @Controller
 public class MainController {
 	
@@ -31,7 +32,7 @@ public class MainController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	//メインメニュー
-	@RequestMapping(value = "/mainMenu", method = RequestMethod.GET)
+	@RequestMapping(value = "/main/mainMenu", method = RequestMethod.GET)
 	public String MainMenu(Model model,HttpSession session) {
 		logger.debug("MainMenu");
 		session.getAttribute("login_id");
@@ -63,7 +64,7 @@ public class MainController {
 			session.setAttribute("userName", user.getUserName());
 			session.setAttribute("mobileCheck", mobileCheck);
 			
-			return"redirect:/mainMenu";
+			return"redirect:/main/mainMenu";
 
 		}
 		
@@ -74,6 +75,7 @@ public class MainController {
 		}
 		return "redirect:/login";
 	}
+	
 	
 	
 	//ログアウト

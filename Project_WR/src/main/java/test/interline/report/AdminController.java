@@ -2,6 +2,10 @@ package test.interline.report;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +14,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import test.interline.report.dao.AdminDAO;
 import test.interline.report.util.PageNavigator;
 import test.interline.report.vo.reportListVO;
 import test.interline.report.vo.userVO;
+
 
 @Controller
 public class AdminController {
@@ -28,15 +34,29 @@ public class AdminController {
 	AdminDAO dao;
 	
 	//�꺃�깮�꺖�깉�굮沃���
-	@RequestMapping(value = "/readReport", method = RequestMethod.GET)
-	public String readReport(Model model, int reportNum) {
+
+	@RequestMapping(value = "/admin/readReport", method = RequestMethod.GET)
+	public String readReport(Model model, int reportNum, HttpServletRequest request) {
+
 		logger.debug("reportNum:{}", reportNum);
 		model.addAttribute("ReportNumValue", reportNum); // 모델값
+		
+		HttpSession session = request.getSession();
+		String getMobilecheck=(String)session.getAttribute("mobileCheck");
+		if(getMobilecheck.equals("")){
+			getMobilecheck="1";
+		}
+		System.out.println("관리자모바일: "+getMobilecheck);
+		if(getMobilecheck.equals("1")) {
+			System.out.println("관리자모바일접속");
+			return "Admin/readReportMobile";
+		}
+		
 		return "Admin/readReport";
 	}
 	
 	//�꺃�깮�꺖�깉�꺁�궧�깉
-	@RequestMapping(value = "/reportList", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/reportList", method = RequestMethod.GET)
 	public String getList2(Model model,@RequestParam(value="page", defaultValue="1") int page) {
 		logger.debug("pageNum:{}", page);
 		
@@ -50,14 +70,26 @@ public class AdminController {
 		return "Admin/reportList";
 	}
 	
-	@RequestMapping(value="/registerUser", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/registerUser", method=RequestMethod.GET)
 	public String insertUserForm() {
 		logger.debug("RegisterUser");
 		
 		return "Admin/registerUser";
 	}
 	
-	@RequestMapping(value="/registerUser", method=RequestMethod.POST)
+
+	@ResponseBody
+	@RequestMapping(value="/admin/check_multiple", method=RequestMethod.POST)
+	public String check_Multiple(int userNum, String userId) {
+		logger.debug("userNum:{},userId:{}",userNum,userId);
+		userVO check_result = null;
+		check_result = dao.check_Multiple("check_num",userNum);
+		check_result = dao.check_Multiple("check_id",userId);
+		
+		return "true";
+	}
+	
+	@RequestMapping(value="/admin/registerUser", method=RequestMethod.POST)
 	public String insertUser(userVO user) {
 		logger.debug("insert_user:{}",user);
 		

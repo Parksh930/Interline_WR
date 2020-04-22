@@ -10,6 +10,7 @@
 
 <script src="<c:url value = 'resources/js/jquery-2.0.3.min.js'/>"></script>
 
+
 <script>
 <c:if test="${error!=null && error!=''}">alert("${error}");</c:if>
 

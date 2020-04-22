@@ -17,6 +17,12 @@ function pageBack(){
 	
 }
 
+function logout(){
+
+	location.href = "logout";
+	
+}
+
 function formSubmit(page){
 	var p = document.getElementById('page');
 	
@@ -77,13 +83,16 @@ color: white;
 a{
 text-decoration: none;
 
+.Main_logOut{
+margin: 0px 0px 0px 20px;
+}
 
 }
 </style>
 
-<body>
-<h1>報告書リスト</h1>
 
+<body>
+<h1>報告書リスト</h1><button class="Read_Btn" type="button" onclick="logout()">ログアウト</button>
 <div id="report_List">
 <table>
 <tr>

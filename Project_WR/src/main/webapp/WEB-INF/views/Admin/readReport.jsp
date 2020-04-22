@@ -4,11 +4,10 @@
 
 <!DOCTYPE html>
 <html style="height: 100%">
+<head>
 <script>
 	function pagechange() {
-
 		location.href = "reportList";
-
 	}
 </script>
 
@@ -21,12 +20,11 @@
 <script type="text/javascript" src="http://serverComputer:8888/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
 <!-- <script type="text/javascript" src="http://192.168.0.103:8888/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script> -->
 
-<head>
+
 <title>ReadReport</title>
 </head>
 <body style="width: 98%; height: 98%">
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
-
 	<script> 
 
 	var ReportdataVO = "Reportdata="+"${ReportNumValue}";
@@ -49,3 +47,4 @@
 
 </body>
 </html>
+
