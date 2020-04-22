@@ -21,6 +21,9 @@ public interface UserMapper {
 
 	void writeReportMain(ArrayList<reportMainVO> reportMains);
 
+	int getTotal(int user_num);
+
+
 
 	
 }

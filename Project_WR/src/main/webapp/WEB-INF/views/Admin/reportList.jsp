@@ -12,24 +12,25 @@
 <script>
 
 function pageBack(){
-
-	location.href = "mainMenu";
-	
+	location.href = "../main/mainMenu";
 }
 
 function logout(){
 
-	location.href = "logout";
+	location.href = "../logout";
 	
 }
 
 function formSubmit(page){
 	var p = document.getElementById('page');
-	
 	p.value=page;
-							
 	document.location.href = "reportList?page=" + p.value;
 }
+  function printAll(){
+	//location.href = "../admin/printAll?reportNum="+${report_List.reportNum};
+	location.href = "../admin/printAll";
+}
+
 </script>
 
 <style>
@@ -78,6 +79,7 @@ border-radius: 9px;
 padding: 2px 5px;
 background-color: rgb(0, 112, 192);
 color: white;
+cursor: pointer;
 }
 
 a{
@@ -125,6 +127,7 @@ margin: 0px 0px 0px 20px;
 <a href="javascript:formSubmit(	${navi.currentPage + navi.pagePerGroup})">▷▷</a>
 </div>
 <div align="right">
+<button class="Read_Btn" type="button" onclick="printAll()">全体閲覧</button>
 <button class="Read_Btn" type="button" onclick="pageBack()">メインメニューへ</button>
 </div>
 <input type = "hidden" name="page" id="page" value="1"/>

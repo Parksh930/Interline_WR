@@ -31,7 +31,7 @@ public class MainController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	//メインメニュー
+	//�깳�궎�꺍�깳�깑�깷�꺖
 	@RequestMapping(value = "/main/mainMenu", method = RequestMethod.GET)
 	public String MainMenu(Model model,HttpSession session) {
 		logger.debug("MainMenu");
@@ -40,7 +40,7 @@ public class MainController {
 		return "mainmenu";
 	}
 	
-	//ログインフォーム
+	//�꺆�궛�궎�꺍�깢�궔�꺖�깲
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginForm(HttpSession session, HttpServletResponse response) {
 		response.setHeader("Access-Control-Allow-Origin", "*");
@@ -49,7 +49,7 @@ public class MainController {
 		return "login";
 	}
 	
-	//ログイン処理
+	//�꺆�궛�궎�꺍�눇�릤
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(String login_id, String login_pw, String mobileCheck
 					, HttpSession session,RedirectAttributes redirect) {
@@ -78,7 +78,7 @@ public class MainController {
 	
 	
 	
-	//ログアウト
+	//�꺆�궛�궋�궑�깉
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpSession session) {
 		logger.debug("logout");

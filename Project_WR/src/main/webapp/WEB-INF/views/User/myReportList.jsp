@@ -14,17 +14,18 @@
 <script>
 
 function pageBack(){
-
-	location.href = "mainMenu";
-	
+	location.href = "../main/mainMenu";
+}
+function logout(){
+	location.href = "../logout";
 }
 
-function formSubmit(pg){
-	var pp = document.getElementById('pg');
+function formSubmit(page){
+	var pp = document.getElementById('page');
 	
-	pp.value=pg;
+	pp.value=page;
 							
-	document.location.href = "ReportList?pg=" + pp.value;
+	document.location.href = "myReportList?page=" + pp.value;
 }
 </script>
 
@@ -74,6 +75,7 @@ border-radius: 9px;
 padding: 2px 5px;
 background-color: rgb(0, 112, 192);
 color: white;
+cursor: pointer;
 }
 
 a{
@@ -83,7 +85,7 @@ text-decoration: none;
 
 
 <body>
-<h1>My報告書リスト</h1>
+<h1>My報告書リスト</h1><button class="Read_Btn" type="button" onclick="logout()">ログアウト</button>
 
 <div id="report_List">
 <table>

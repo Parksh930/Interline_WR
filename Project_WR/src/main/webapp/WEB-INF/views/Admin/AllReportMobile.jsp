@@ -42,18 +42,15 @@
 
 	<script> 
 
-	var ReportdataVO = "Reportdata="+"${ReportNumValue}";
 	
 		function SetOZParamters_OZViewer() {
 			var oz;
 			oz = document.getElementById("OZViewer");
 			oz.sendToActionScript("connection.servlet",
 					"http://192.168.1.79:8888/oz80/server");
-			oz.sendToActionScript("connection.reportname", "OSA/interlineTest.ozr");
+			oz.sendToActionScript("connection.reportname", "OSA/interlineTest2.ozr");
 			oz.sendToActionScript("global.language", "ja");
-			oz.sendToActionScript("odi.odinames", "interlineTest");
-			oz.sendToActionScript("odi.interlineTest.pcount","1");
-			oz.sendToActionScript("odi.interlineTest.args1",ReportdataVO);
+			oz.sendToActionScript("odi.odinames", "interlineTest2");
 			return true;
 		}
 		start_ozjs("OZViewer", "http://192.168.1.79:8888/oz80/ozhviewer/", true);

@@ -55,16 +55,19 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/user/myReportList", method = RequestMethod.GET)
-    public String getList(Model model, @RequestParam(value="pg", defaultValue="1") int pg, HttpSession session) {
-		logger.debug("pgNum:{}", pg);
+    public String getList(Model model, @RequestParam(value="page", defaultValue="1") int page, HttpSession session) {
+		logger.debug("pageNum:{}", page);
 		userVO vo = (userVO)session.getAttribute("user_inform");
+		if(vo == null) {
+			return "login";
+		}
 		int user_num = vo.getUserNum();
-		int all = dao.getAll(user_num);
-		PageNavigator pn = new PageNavigator(countPerPage, pagePerGroup, pg, all);
+		int total = dao.getTotal(user_num);
+		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total);
 		
-		ArrayList<reportListVO> my_list = dao.getMy_List(pn.getStartRecord(), pn.getCountPerPage(),user_num);
+		ArrayList<reportListVO> my_list = dao.getMy_List(navi.getStartRecord(), navi.getCountPerPage(),user_num);
 		
-		model.addAttribute("pn", pn);
+		model.addAttribute("pn", navi);
 		model.addAttribute("report_my",my_list);
 		
 		
