@@ -54,7 +54,10 @@
 				var jsonSet=makeJsonForSubmit(JSON.parse(param1));
 				$('#submitJsonReport').val(JSON.stringify(jsonSet[0]));
 				$('#submitJsonContents').val(JSON.stringify(jsonSet[1]));
-				document.getElementById('submitReport').submit();
+				var submitConfirm=confirm("提出しまｓか？");
+				if(submitConfirm==true){
+					document.getElementById('submitReport').submit();
+				}
 			}else if(param3=="cancel"){
 				location.href="../main/mainMenu";
 			}
