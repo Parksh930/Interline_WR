@@ -26,10 +26,10 @@ function formSubmit(page){
 	p.value=page;
 	document.location.href = "reportList?page=" + p.value;
 }
- function printAll(){
+/*  function printAll(){
 	//location.href = "../admin/printAll?reportNum="+${report_List.reportNum};
 	location.href = "../admin/printAll";
-}
+} */
 
 </script>
 
@@ -127,7 +127,7 @@ margin: 0px 0px 0px 20px;
 <a href="javascript:formSubmit(	${navi.currentPage + navi.pagePerGroup})">▷▷</a>
 </div>
 <div align="right">
-<button class="Read_Btn" type="button" onclick="printAll()">全体閲覧</button>
+<!-- <button class="Read_Btn" type="button" onclick="printAll()">全体閲覧</button> -->
 <button class="Read_Btn" type="button" onclick="pageBack()">メインメニューへ</button>
 </div>
 <input type = "hidden" name="page" id="page" value="1"/>

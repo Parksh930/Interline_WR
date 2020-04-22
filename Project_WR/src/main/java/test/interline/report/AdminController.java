@@ -104,18 +104,18 @@ public class AdminController {
 		return "redirect:/mainMenu";
 	}
 	
-	@RequestMapping(value="/admin/printAll", method=RequestMethod.GET)
+/*	@RequestMapping(value="/admin/printAll", method=RequestMethod.GET)
 	public String printAll(HttpServletRequest request) {
 		
-		/*
+		
 		 * HttpSession session = request.getSession(); String
 		 * getMobilecheck=(String)session.getAttribute("mobileCheck");
 		 * if(getMobilecheck.equals("")){ getMobilecheck="1"; }
 		 * System.out.println("관리자모바일: "+getMobilecheck); if(getMobilecheck.equals("1"))
 		 * { System.out.println("관리자모바일접속"); return "Admin/AllReportMobile"; }
-		 */
+		 
 		
-		return "Admin/AllReport";
+		return "Admin/AllReport";*/
 	}
 	
 	
