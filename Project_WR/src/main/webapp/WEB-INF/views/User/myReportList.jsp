@@ -14,9 +14,10 @@
 <script>
 
 function pageBack(){
-
 	location.href = "../main/mainMenu";
-	
+}
+function logout(){
+	location.href = "../logout";
 }
 
 function formSubmit(page){
@@ -84,7 +85,7 @@ text-decoration: none;
 
 
 <body>
-<h1>My報告書リスト</h1>
+<h1>My報告書リスト</h1><button class="Read_Btn" type="button" onclick="logout()">ログアウト</button>
 
 <div id="report_List">
 <table>
