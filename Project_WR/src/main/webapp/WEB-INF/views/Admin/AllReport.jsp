@@ -27,7 +27,7 @@
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
 	<script> 
 
-	var ReportdataVO = "Reportdata="+"${ReportNumValue}";
+/* 	var ReportdataVO = "Reportdata="+"${ReportNumValue}"; */
 	
 		function SetOZParamters_OZViewer() {
 			var oz;
