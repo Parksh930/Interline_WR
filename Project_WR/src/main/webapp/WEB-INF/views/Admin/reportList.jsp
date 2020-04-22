@@ -13,13 +13,13 @@
 
 function pageBack(){
 
-	location.href = "mainMenu";
+	location.href = "../main/mainMenu";
 	
 }
 
 function logout(){
 
-	location.href = "logout";
+	location.href = "../main/logout";
 	
 }
 
