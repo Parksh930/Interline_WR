@@ -15,16 +15,16 @@
 
 function pageBack(){
 
-	location.href = "../main/mainMenu";
+	location.href = "mainMenu";
 	
 }
 
 function formSubmit(pg){
-	var pp = document.getElementById('page');
+	var pp = document.getElementById('pg');
 	
 	pp.value=pg;
 							
-	document.location.href = "myReportList?pg=" + pp.value;
+	document.location.href = "ReportList?pg=" + pp.value;
 }
 </script>
 
@@ -74,7 +74,6 @@ border-radius: 9px;
 padding: 2px 5px;
 background-color: rgb(0, 112, 192);
 color: white;
-cursor: pointer;
 }
 
 a{
@@ -121,7 +120,7 @@ text-decoration: none;
 <button class="Read_Btn" type="button" onclick="pageBack()">メインメニューへ</button>
 <input type = "hidden" name="page" id="page" value="1"/>
 </div>
-</div>
+
 
 </body>
 </html>
