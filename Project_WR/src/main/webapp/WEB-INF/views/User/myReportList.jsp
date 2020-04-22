@@ -15,7 +15,7 @@
 
 function pageBack(){
 
-	location.href = "mainMenu";
+	location.href = "../main/mainMenu";
 	
 }
 
@@ -74,6 +74,7 @@ border-radius: 9px;
 padding: 2px 5px;
 background-color: rgb(0, 112, 192);
 color: white;
+cursor: pointer;
 }
 
 a{

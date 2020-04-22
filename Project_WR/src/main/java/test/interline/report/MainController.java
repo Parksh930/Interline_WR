@@ -68,9 +68,9 @@ public class MainController {
 		}
 		
 		if(user == null) {
-			redirect.addFlashAttribute("error","耶섇쑉�걮�겒�걚ID�겎�걲��");
+			redirect.addFlashAttribute("error","存在しないIDです。");
 		}else if(!user.getPassword().equals(login_pw)){
-			redirect.addFlashAttribute("error","�깙�궧�꺈�꺖�깋�걣訝��눜�걮�겲�걵�굯��");
+			redirect.addFlashAttribute("error","パスワードが一致しません。");
 		}
 		return "redirect:/login";
 	}
