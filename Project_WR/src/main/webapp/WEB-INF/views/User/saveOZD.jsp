@@ -50,6 +50,7 @@
 		%OZ_HOME%/WEB-INF/lib 에 있습니다.
 ******************************************************************************************>
  -->
+ 
 <%@ page import="oz.scheduler.*,
                  oz.framework.api.*,
                  oz.util.SortProperties,
@@ -57,6 +58,7 @@
                  oz.framework.cp.OZCPException,
                  java.util.*"
 %>
+
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <%
@@ -285,5 +287,5 @@
 	}
 %>
 <script>
-	location.href="./mainMenu"
+	location.href="../main/mainMenu"
 </script>

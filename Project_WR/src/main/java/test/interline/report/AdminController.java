@@ -21,6 +21,7 @@ import test.interline.report.util.PageNavigator;
 import test.interline.report.vo.reportListVO;
 import test.interline.report.vo.userVO;
 
+
 @Controller
 public class AdminController {
 
@@ -33,8 +34,10 @@ public class AdminController {
 	AdminDAO dao;
 	
 	//�꺃�깮�꺖�깉�굮沃���
-	@RequestMapping(value = "/readReport", method = RequestMethod.GET)
-	public String readReport(Model model, int reportNum,HttpServletRequest request) {
+
+	@RequestMapping(value = "/admin/readReport", method = RequestMethod.GET)
+	public String readReport(Model model, int reportNum, HttpServletRequest request) {
+
 		logger.debug("reportNum:{}", reportNum);
 		model.addAttribute("ReportNumValue", reportNum); // 모델값
 		
@@ -53,7 +56,7 @@ public class AdminController {
 	}
 	
 	//�꺃�깮�꺖�깉�꺁�궧�깉
-	@RequestMapping(value = "/reportList", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/reportList", method = RequestMethod.GET)
 	public String getList2(Model model,@RequestParam(value="page", defaultValue="1") int page) {
 		logger.debug("pageNum:{}", page);
 		
@@ -67,15 +70,16 @@ public class AdminController {
 		return "Admin/reportList";
 	}
 	
-	@RequestMapping(value="/registerUser", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/registerUser", method=RequestMethod.GET)
 	public String insertUserForm() {
 		logger.debug("RegisterUser");
 		
 		return "Admin/registerUser";
 	}
 	
+
 	@ResponseBody
-	@RequestMapping(value="/check_multiple", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/check_multiple", method=RequestMethod.POST)
 	public String check_Multiple(int userNum, String userId) {
 		logger.debug("userNum:{},userId:{}",userNum,userId);
 		userVO check_result = null;
@@ -85,7 +89,7 @@ public class AdminController {
 		return "true";
 	}
 	
-	@RequestMapping(value="/registerUser", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/registerUser", method=RequestMethod.POST)
 	public String insertUser(userVO user) {
 		logger.debug("insert_user:{}",user);
 		

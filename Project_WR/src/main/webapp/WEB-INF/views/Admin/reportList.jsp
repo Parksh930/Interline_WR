@@ -90,6 +90,7 @@ margin: 0px 0px 0px 20px;
 }
 </style>
 
+
 <body>
 <h1>報告書リスト</h1><button class="Read_Btn" type="button" onclick="logout()">ログアウト</button>
 <div id="report_List">
