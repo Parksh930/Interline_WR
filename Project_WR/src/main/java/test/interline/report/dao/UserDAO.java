@@ -53,4 +53,11 @@ public class UserDAO {
 		mapper.writeReportMain(reportMains);
 
 	}
+
+
+	public int getTotal(int user_num) {
+		UserMapper mapper = session.getMapper(UserMapper.class);
+		int cnt = mapper.getTotal(user_num);
+		return cnt;
+	}
 }

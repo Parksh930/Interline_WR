@@ -88,6 +88,10 @@ select * from report_list where User_Num = #{User_Num} and User_Name = #{User_Na
 
 </select>
 
+	<select id="getTotal" resultType="int" parameterType="int">
+		select count(*) from report_list where User_Num = #{User_Num}
+	</select>
+
 <select id="getAll" resultType="int" parameterType="int">
 	select count(*) from report_list where user_num = #{user_num} ORDER BY reportnum desc
 </select>

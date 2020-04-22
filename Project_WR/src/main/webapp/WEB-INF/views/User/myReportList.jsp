@@ -19,12 +19,12 @@ function pageBack(){
 	
 }
 
-function formSubmit(pg){
-	var pp = document.getElementById('pg');
+function formSubmit(page){
+	var pp = document.getElementById('page');
 	
-	pp.value=pg;
+	pp.value=page;
 							
-	document.location.href = "myReport?pg=" + pp.value;
+	document.location.href = "myReportList?page=" + pp.value;
 }
 </script>
 
@@ -119,7 +119,7 @@ text-decoration: none;
 </div>
 <div align="right">
 <button class="Read_Btn" type="button" onclick="pageBack()">メインメニューへ</button>
-<input type = "hidden" name="page" id="pg" value="1"/>
+<input type = "hidden" name="page" id="page" value="1"/>
 </div>
 
 
