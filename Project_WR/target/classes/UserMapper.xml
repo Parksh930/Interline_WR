@@ -9,6 +9,13 @@
 		  select * from report_list where user_num = #{user_num} order by reportnum desc
 	</select>
 	
+
+<update id="myPage">	
+	update user set
+	UserName = #{UserName},
+	Password = #{Password}
+</update>
+	
 	
 <insert id="writeReportMain" parameterType="java.util.Map">
 	insert into report_main
