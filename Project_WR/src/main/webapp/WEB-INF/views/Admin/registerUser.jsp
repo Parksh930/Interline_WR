@@ -8,27 +8,34 @@
 <meta charset="UTF-8">
 <title>RegisterUser</title>
 </head>
-<script src="<c:url value = 'resources/js/jquery-2.0.3.min.js'/>"></script>
+<script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
 <script>
-$(function(){
+ $(function(){
 	$("#insert_User_btn").click(function(){
 		var user_num = $("#UserNum").val();
 		var user_id = $("#UserId").val();
 		var user_pw = $("#Password").val();
 		var user_name = $("#UserName").val();
 
-		if(user_num !="" && user_id != ""&& user_pw != ""&& user_name != ""){
+ 		if(user_num !="" && user_id != ""&& user_pw != ""&& user_name != ""){
 
 			$.ajax({
 				type:"post",
 				url:"check_multiple",
 				data:{userNum:user_num,userId:user_id},
-				dataType:"json",
+				dataType:"text",
 				success:function(result){
-					console.log(result);
+
+
+					if(result != "成功"){
+						alert(result);						
+					}else{
+						
+						$('#registerUser_Form').submit();	
+					} 
 				}
 			});
-		}
+		} 
 
 		if(user_num == ""){
 			alert("社員番号を入力してください。");
@@ -47,7 +54,7 @@ $(function(){
 	});
 	
 });
-
+ 
 </script>
 <style type="text/css">
 
@@ -60,16 +67,22 @@ margin: 100px auto;
 width: fit-content;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 </style>
 <body>
 <h1>社員登録</h1>
 
 <div id = "registerUser_contents">
-<form action="registerUser" method="post">
+<form action="../admin/registerUser" method="post" id="registerUser_Form">
 <table>
 <tr>
 <td>社員番号</td>
-<td><input type="text" id="UserNum" name="UserNum"></td>
+<td><input type="number" id="UserNum" name="UserNum"></td>
 </tr>
 <tr>
 <td>ID</td>
@@ -91,7 +104,9 @@ width: fit-content;
 </select></td>
 </tr>
 <tr>
-<td colspan="2"><button id="insert_User_btn">社員登録</button></td>
+<td colspan="2"><button id="insert_User_btn">社員登録</button>
+<a href="../main/mainMenu">戻し</a>
+</td>
 </tr>
 </table>
 </form>

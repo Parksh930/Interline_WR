@@ -18,4 +18,8 @@ public interface AdminMapper {
 
 	userVO check_Multiple(HashMap<String, Object> map);
 
+	ArrayList<userVO> getUser_list();
+
+	userVO getUser(int num);
+
 }
