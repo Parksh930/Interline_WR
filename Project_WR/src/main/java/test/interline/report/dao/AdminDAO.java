@@ -56,4 +56,20 @@ public class AdminDAO {
 		return check_reslut;
 	}
 
+	public ArrayList<userVO> getUser_list() {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		
+		ArrayList<userVO> vo = mapper.getUser_list();
+		
+		return vo;
+	}
+
+	public userVO getUser(int num) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		
+		userVO vo = mapper.getUser(num);
+		
+		return vo;
+	}
+
 }
