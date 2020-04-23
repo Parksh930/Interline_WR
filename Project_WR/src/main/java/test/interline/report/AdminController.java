@@ -79,14 +79,21 @@ public class AdminController {
 
 
 	@ResponseBody
-	@RequestMapping(value="/admin/check_multiple", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/check_multiple", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
 	public String check_Multiple(int userNum, String userId) {
 		logger.debug("userNum:{},userId:{}",userNum,userId);
 		userVO check_result = null;
 		check_result = dao.check_Multiple("check_num",userNum);
+		if(check_result != null) {
+			
+			return "存在する社員番号です。";
+		}
 		check_result = dao.check_Multiple("check_id",userId);
+		if(check_result != null) {
+			return "存在するIDです。";
+		}
 
-		return "true";
+		return "成功";
 	}
 
 	@RequestMapping(value="/admin/registerUser", method=RequestMethod.POST)
@@ -101,7 +108,24 @@ public class AdminController {
 			logger.debug("登録失敗");
 		}
 
-		return "redirect:/mainMenu";
+		return "redirect:/main/mainMenu";
+	}
+	
+	@RequestMapping(value="/admin/userList", method=RequestMethod.GET)
+	public String admin_UserList(Model model) {
+		ArrayList<userVO> user_list = dao.getUser_list();
+		
+		model.addAttribute("user_all",user_list);
+		return "Admin/userList";
+	}
+	
+	@RequestMapping(value="/admin/updateUser", method=RequestMethod.GET)
+	public String admin_UserUpdateForm(int Num,Model model){
+		logger.debug("userNum:{}",Num);
+		userVO user = dao.getUser(Num);
+		
+		model.addAttribute("get_user",user);
+		return "Admin/adminUpdateUser";
 	}
 
 	@RequestMapping(value="/admin/printAll", method=RequestMethod.GET)

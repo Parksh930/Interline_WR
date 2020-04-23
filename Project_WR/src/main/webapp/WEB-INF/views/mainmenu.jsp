@@ -40,11 +40,15 @@ margin: 0px 0px 0px 20px;
 margin: 40px 0px 20px 25px;
 }
 
-#menu_User p{
+#menu_User p,#menu_Admin p{
 margin: 20px 0px 20px 25px;
 }
 
 #menu_User > p.User_writeReport{
+margin: 40px 0px 20px 25px; 
+}
+
+#menu_Admin > p.Admin_registerUser{
 margin: 40px 0px 20px 25px; 
 }
 
@@ -63,7 +67,7 @@ margin: 40px 0px 20px 25px;
 <c:if test='${sessionScope.user_inform.authority == "u"}'>
 <div id="menu_User">
 <span class="Main_userName">${sessionScope.user_inform.userName}さん</span>
-<span class="Main_logOut"><a href=../logout>ログアウト</a></span>
+<span class="Main_logOut"><a href="../logout">ログアウト</a></span>
 <p class="User_writeReport"><a href="../user/writeReport">報告書作成</a></p>
 <p class="User_writeContinue"><a href="../user/keepWriting">作成続き</a></p>
 <p class="User_reportList"><a href="../user/myReportList">報告書閲覧</a></p>
@@ -73,9 +77,10 @@ margin: 40px 0px 20px 25px;
 <c:if test='${sessionScope.user_inform.authority == "a"}'>
 <div id="menu_Admin">
 <span class="Main_userName">管理者</span>
-<span class="Main_logOut"><a href=../logout>ログアウト</a></span>
-<p class="Admin_reportList"><a href=./registerUser>社員登録</a></p>
-<p class="Admin_reportList"><a href=../admin/reportList>報告書リスト</a></p>
+<span class="Main_logOut"><a href="../logout">ログアウト</a></span>
+<p class="Admin_registerUser"><a href="../admin/registerUser">社員登録</a></p>
+<p class="Admin_userList"><a href="../admin/userList">社員リスト</a></p>
+<p class="Admin_reportList"><a href="../admin/reportList">報告書リスト</a></p>
 </div>
 </c:if>
 
