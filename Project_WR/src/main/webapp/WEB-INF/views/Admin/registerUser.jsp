@@ -29,9 +29,8 @@
 
 					if(result != "成功"){
 						alert(result);						
-					}else{
-						
-						$('#registerUser_Form').submit();	
+					}else if(confirm("登録しましか？")){
+							$('#registerUser_Form').submit();			
 					} 
 				}
 			});
@@ -62,6 +61,27 @@ body{
 text-align:center;
 }
 
+a{
+text-decoration: none;
+}
+
+#insert_User_btn{
+border: solid 2px rgb(0, 112, 192);
+border-radius: 9px;
+padding: 2px 5px;
+background-color: rgb(0, 112, 192);
+color: white;
+cursor: pointer;
+}
+
+.return_Btn{
+border: solid 2px rgb(0, 0, 0);
+border-radius: 9px;
+padding: 2px 5px;
+color: black;
+cursor: pointer;
+}
+
 #registerUser_contents{
 margin: 100px auto;
 width: fit-content;
@@ -71,6 +91,10 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+#tr_btn{
+height: 50px;
 }
 
 </style>
@@ -104,8 +128,8 @@ input[type="number"]::-webkit-inner-spin-button {
 </select></td>
 </tr>
 <tr>
-<td colspan="2"><button id="insert_User_btn">社員登録</button>
-<a href="../main/mainMenu">戻し</a>
+<td colspan="2" id="tr_btn"><button id="insert_User_btn">社員登録</button>
+<a href="../main/mainMenu" class="return_Btn">メインメニューへ</a>
 </td>
 </tr>
 </table>

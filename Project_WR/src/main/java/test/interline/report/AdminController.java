@@ -60,7 +60,7 @@ public class AdminController {
 	public String getList2(Model model,@RequestParam(value="page", defaultValue="1") int page) {
 		logger.debug("pageNum:{}", page);
 
-		int total = dao.getTotal();
+		int total = dao.getReport_Total();
 		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total);
 
 		ArrayList<reportListVO> all_list = dao.getAll_List(navi.getStartRecord(), navi.getCountPerPage());
@@ -112,9 +112,16 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/userList", method=RequestMethod.GET)
-	public String admin_UserList(Model model) {
-		ArrayList<userVO> user_list = dao.getUser_list();
+	public String admin_UserList(Model model,@RequestParam(value="page", defaultValue="1") int page) {
 		
+		int total = dao.getUser_Total();
+		logger.debug("userpage:{}", page);
+		logger.debug("usertotal:{}", total);
+		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total);
+
+		ArrayList<userVO> user_list = dao.getUser_list(navi.getStartRecord(), navi.getCountPerPage());
+		
+		model.addAttribute("navi", navi);
 		model.addAttribute("user_all",user_list);
 		return "Admin/userList";
 	}
@@ -124,8 +131,31 @@ public class AdminController {
 		logger.debug("userNum:{}",Num);
 		userVO user = dao.getUser(Num);
 		
+		logger.debug("userVO:{}",user);
 		model.addAttribute("get_user",user);
 		return "Admin/adminUpdateUser";
+	}
+	
+	@RequestMapping(value="/admin/updateUser", method=RequestMethod.POST)
+	public String admin_UserUpdate(userVO update_User,Model model){
+		logger.debug("update_user:{}",update_User);
+		
+		int n = dao.updateUser(update_User);
+		
+		return "redirect:/admin/userList";
+	}
+	
+	@RequestMapping(value="/admin/deleteUser", method=RequestMethod.GET)
+	public String admin_UserDelete(int UserNum){
+		logger.debug("usernum:{}",UserNum);
+		
+		int n = dao.deleteUser(UserNum);
+		
+		if(n == 1) {
+			logger.debug("削除成功");
+		}
+		
+		return "redirect:/admin/userList";
 	}
 
 	@RequestMapping(value="/admin/printAll", method=RequestMethod.GET)
@@ -146,7 +176,6 @@ public class AdminController {
 		return "Admin/AllReport";
 		
 	}
-
 
 }
 
