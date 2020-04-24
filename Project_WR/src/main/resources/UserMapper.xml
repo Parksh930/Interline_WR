@@ -10,7 +10,7 @@
 	</select>
 	
 
-<update id="myPage">	
+<update id="updatemyPage" parameterType="myPage">	
 	update user set
 	UserName = #{UserName},
 	Password = #{Password}

@@ -218,6 +218,10 @@ public class UserController {
 	
 	
 	
+	@RequestMapping(value="/user/profile", method=RequestMethod.GET)
+	public String profileP(int Num,Model model){
+		return "User/userProfile";
+	}
 
 
 	
