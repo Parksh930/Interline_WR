@@ -26,6 +26,7 @@ function formSubmit(page){
 	p.value=page;
 	document.location.href = "reportList?page=" + p.value;
 }
+
   function printAll(){
 	//location.href = "../admin/printAll?reportNum="+${report_List.reportNum};
 	location.href = "../admin/printAll";
@@ -68,7 +69,7 @@ width: 100px;
 width: 150px;
 }
 
-.Reportlist_reportNum{
+.Reportlist_reportBtn{
 border-style: none;
 width:50px;
 }
@@ -84,12 +85,13 @@ cursor: pointer;
 
 a{
 text-decoration: none;
+}
 
 .Main_logOut{
 margin: 0px 0px 0px 20px;
 }
 
-}
+
 </style>
 
 
@@ -109,7 +111,7 @@ margin: 0px 0px 0px 20px;
 <td class="Reportlist_Days"><fmt:formatDate pattern="yyyy.MM.dd" value="${report_List.startWeek}"/>
 ~
 <fmt:formatDate pattern="MM.dd" value="${report_List.endWeek}"/></td>
-<td class="Reportlist_reportNum"><a class="Read_Btn" href="readReport?reportNum=${report_List.reportNum}">閲覧</a></td>
+<td class="Reportlist_reportBtn"><a class="Read_Btn" href="readReport?reportNum=${report_List.reportNum}">閲覧</a></td>
 </tr>
 </c:forEach>
 </table>

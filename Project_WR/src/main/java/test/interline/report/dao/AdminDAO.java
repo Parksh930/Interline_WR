@@ -27,10 +27,10 @@ public class AdminDAO {
 		return all_List;
 	}
 
-	public int getTotal() {
+	public int getReport_Total() {
 		AdminMapper mapper = session.getMapper(AdminMapper.class);
 		
-		int cnt = mapper.getTotal();
+		int cnt = mapper.getReport_Total();
 		
 		return cnt;
 	}
@@ -56,10 +56,11 @@ public class AdminDAO {
 		return check_reslut;
 	}
 
-	public ArrayList<userVO> getUser_list() {
+	public ArrayList<userVO> getUser_list(int start, int count) {
 		AdminMapper mapper = session.getMapper(AdminMapper.class);
 		
-		ArrayList<userVO> vo = mapper.getUser_list();
+		RowBounds rb = new RowBounds(start,count);
+		ArrayList<userVO> vo = mapper.getUser_list(rb);
 		
 		return vo;
 	}
@@ -70,6 +71,30 @@ public class AdminDAO {
 		userVO vo = mapper.getUser(num);
 		
 		return vo;
+	}
+	
+	public int updateUser(userVO update_User) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		
+		int n = mapper.updateUser(update_User);
+		
+		return n;
+	}
+
+	public int deleteUser(int userNum) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		
+		int n = mapper.deleteUser(userNum);
+		
+		return n;
+	}
+
+	public int getUser_Total() {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		
+		int cnt = mapper.getUser_Total();
+		
+		return cnt;
 	}
 
 }

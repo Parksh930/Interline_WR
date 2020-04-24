@@ -12,14 +12,20 @@ public interface AdminMapper {
 
 	ArrayList<reportListVO> getAll_List(RowBounds rb);
 
-	int getTotal();
+	int getReport_Total();
 
 	int insertUser(userVO user);
 
 	userVO check_Multiple(HashMap<String, Object> map);
 
-	ArrayList<userVO> getUser_list();
+	ArrayList<userVO> getUser_list(RowBounds rb);
+	
+	int getUser_Total();
 
 	userVO getUser(int num);
+
+	int deleteUser(int userNum);
+
+	int updateUser(userVO update_User);
 
 }
