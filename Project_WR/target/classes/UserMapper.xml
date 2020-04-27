@@ -10,12 +10,9 @@
 	</select>
 	
 
-<update id="updatemyPage" parameterType="user">	
-	update user_inform  
-	set
-	UserName = #{UserName},
-	Password = #{Password}
-</update>
+<select id="updatemyPage" parameterType="string" resultType="user">	
+	select * from user_inform where userid = #{id}
+</select>
 	
 	
 <insert id="writeReportMain" parameterType="java.util.Map">

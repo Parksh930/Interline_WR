@@ -217,17 +217,14 @@ public class UserController {
 	
 	
 	
-	@RequestMapping(value="/user/profile", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/user/profile", method={RequestMethod.GET, RequestMethod.POST})
 
-	public String updatemyPage(userVO myPage){
-		int result = dao.updatemyPage(myPage); 
+	public String updatemyPage(HttpSession session){
+		String id = (String)session.getAttribute("login_id");
+		
+		userVO user = dao.updatemyPage(id); 
 
-		if(result == 1) {
-			logger.debug("修正成功");
-		}else {
-			logger.debug("修正失敗");
-		}
-		return "redirect:/main/mainMenu";
+		return "User/myProfile";
 	}
 
 
