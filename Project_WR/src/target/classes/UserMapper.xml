@@ -9,11 +9,6 @@
 		  select * from report_list where user_num = #{user_num} order by reportnum desc
 	</select>
 	
-
-<select id="updatemyPage" parameterType="string" resultType="user">	
-	select * from user_inform where userid = #{id}
-</select>
-	
 	
 <insert id="writeReportMain" parameterType="java.util.Map">
 	insert into report_main
@@ -89,15 +84,11 @@
 </insert>
 
 <select id="readReportList" resultType="report_list" parameterType="report_list">
-select * from report_list where User_Num = #{User_Num} and User_Name = #{User_Name} ORDER BY reportnum desc limit 1
+select * from report_list where User_Num = #{User_Num} and User_Name = #{User_Name} ORDER BY sendDays DESC limit 1
 
 </select>
 
-	<select id="getTotal" resultType="int" parameterType="int">
-		select count(*) from report_list where User_Num = #{User_Num}
-	</select>
-
 <select id="getAll" resultType="int" parameterType="int">
-	select count(*) from report_list where user_num = #{user_num} ORDER BY reportnum desc
+	select count(*) from report_list where user_num = #{user_num}
 </select>
 </mapper>

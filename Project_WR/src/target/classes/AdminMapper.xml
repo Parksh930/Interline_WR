@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.interline.report.dao.AdminMapper">
+	<select id="getAll_List" resultType="report_list">
+		select * from report_list order by reportnum desc
+	</select>
+	
+	<select id="getTotal" resultType="int">
+		select count(*) from report_list
+	</select>
+</mapper>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import test.interline.report.vo.reportListVO;
 import test.interline.report.vo.reportMainVO;
+import test.interline.report.vo.userVO;
 
 @Repository
 
@@ -60,4 +61,15 @@ public class UserDAO {
 		int cnt = mapper.getTotal(user_num);
 		return cnt;
 	}
+	
+	
+	public userVO updatemyPage(String id) {
+		UserMapper mapper = session.getMapper(UserMapper.class);
+		
+		userVO vo = mapper.updatemyPage(id);
+		
+		return vo;
+	}
+	
+	
 }

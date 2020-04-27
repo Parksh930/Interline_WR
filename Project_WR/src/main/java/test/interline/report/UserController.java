@@ -14,7 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -215,4 +214,19 @@ public class UserController {
 		model.addAttribute("error",null);
 		return "mainmenu";
 	}
+	
+	
+	
+	@RequestMapping(value="/user/profile", method={RequestMethod.GET, RequestMethod.POST})
+
+	public String updatemyPage(HttpSession session){
+		String id = (String)session.getAttribute("login_id");
+		
+		userVO user = dao.updatemyPage(id); 
+
+		return "User/myProfile";
+	}
+
+
+	
 }
