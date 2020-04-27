@@ -14,7 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -218,9 +217,17 @@ public class UserController {
 	
 	
 	
-	@RequestMapping(value="/user/profile", method=RequestMethod.GET)
-	public String profileP(int Num,Model model){
-		return "User/Profile";
+	@RequestMapping(value="/user/profile", method= {RequestMethod.GET, RequestMethod.POST})
+
+	public String updatemyPage(userVO myPage){
+		int result = dao.updatemyPage(myPage); 
+
+		if(result == 1) {
+			logger.debug("修正成功");
+		}else {
+			logger.debug("修正失敗");
+		}
+		return "redirect:/main/mainMenu";
 	}
 
 

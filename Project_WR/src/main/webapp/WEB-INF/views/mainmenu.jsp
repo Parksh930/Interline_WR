@@ -71,6 +71,7 @@ margin: 40px 0px 20px 25px;
 <p class="User_writeReport"><a href="../user/writeReport">報告書作成</a></p>
 <p class="User_writeContinue"><a href="../user/keepWriting">作成続き</a></p>
 <p class="User_reportList"><a href="../user/myReportList">報告書閲覧</a></p>
+<p class="User_profile"><a href="../user/profile">Myプロフィール</a></p>
 </div>
 </c:if>
 
