@@ -9,10 +9,18 @@
 		  select * from report_list where user_num = #{user_num} order by reportnum desc
 	</select>
 	
-
-<select id="updatemyPage" parameterType="string" resultType="user">	
-	select * from user_inform where userid = #{id}
-</select>
+<update id="updateMp" parameterType="user">
+		update 
+			user_inform 
+		set 
+		<if test='UserName != null and UserName != ""'>
+			UserName = #{UserName}
+			</if>
+			<if test='Password != null and Password != ""'>
+			,password = #{Password}
+			</if>
+		where usernum = #{UserNum}
+	</update>	
 	
 	
 <insert id="writeReportMain" parameterType="java.util.Map">

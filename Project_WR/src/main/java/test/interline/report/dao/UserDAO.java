@@ -63,12 +63,14 @@ public class UserDAO {
 	}
 	
 	
-	public userVO updatemyPage(String id) {
+
+
+	public int updateMp(userVO user) {
 		UserMapper mapper = session.getMapper(UserMapper.class);
 		
-		userVO vo = mapper.updatemyPage(id);
+		int result = mapper.updateMp(user);
 		
-		return vo;
+		return result;
 	}
 	
 	

@@ -24,7 +24,7 @@ public interface UserMapper {
 
 	int getTotal(int user_num);
 
-	userVO updatemyPage(String id);
+	int updateMp(userVO user);
 
 	
 }

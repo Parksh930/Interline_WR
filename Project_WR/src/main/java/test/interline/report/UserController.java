@@ -217,13 +217,31 @@ public class UserController {
 	
 	
 	
-	@RequestMapping(value="/user/profile", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/user/profile", method=RequestMethod.GET)
 
 	public String updatemyPage(HttpSession session){
-		String id = (String)session.getAttribute("login_id");
-		
-		userVO user = dao.updatemyPage(id); 
 
+		return "User/myProfile";
+	}
+	
+	@RequestMapping(value="/user/profile", method=RequestMethod.POST)
+
+	public String updatemyUser(HttpSession session,userVO update_user){
+		userVO user = (userVO)session.getAttribute("user_inform");
+		
+		user.setUserName(update_user.getUserName());
+		user.setPassword(update_user.getPassword());
+		
+		int n = dao.updateMp(user);
+		
+		if(n == 1) {
+			logger.debug("成功");
+		}else {
+			logger.debug("失敗");
+		}
+		logger.debug("user:{}",user);
+		logger.debug("update_user:{}",update_user);
+		
 		return "User/myProfile";
 	}
 
