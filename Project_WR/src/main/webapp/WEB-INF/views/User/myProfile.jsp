@@ -16,6 +16,7 @@
 
 						if( user_pw != ""&& user_name != ""){
 							$("#profileUpdate").submit();
+							alert("修正完了");
 						} 
 
 		
