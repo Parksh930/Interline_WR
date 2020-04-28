@@ -81,7 +81,7 @@ public class UserController {
 	
 	//신규작성페이지로
 	@RequestMapping(value = "/user/writeReport", method = RequestMethod.GET)
-	public String loginForm(HttpServletRequest request, HttpServletResponse response, Model model) {
+	public String writeReport(HttpServletRequest request, HttpServletResponse response, Model model) {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		/*
 		 * response.setHeader("Access-Control-Allow-Credentials", "true");
