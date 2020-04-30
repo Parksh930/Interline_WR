@@ -27,8 +27,14 @@
 				success:function(result){
 
 
-					if(result != "成功"){
-						alert(result);						
+					if(result == "存在する社員番号です。"){
+						alert(result);
+						$("#UserNum").focus();
+						
+					}else if(result == "存在するIDです。"){
+						alert(result);
+						$("#UserId").focus();	
+																				
 					}else if(confirm("登録しましか？")){
 							$('#registerUser_Form').submit();			
 					} 
