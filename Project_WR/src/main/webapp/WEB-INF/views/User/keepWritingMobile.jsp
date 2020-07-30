@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="test.interline.report.util.getProperties"%>
+<%@page import="java.util.Properties"%>
 <%@ page session="false" %>
+<% getProperties properties= new getProperties(); %>
 <html style="height:100%">
 <head>
 	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -17,13 +20,13 @@
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css"/>
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
-	<link rel="stylesheet" href="http://192.168.1.79:8888/oz80/ozhviewer/ui.dynatree.css" type="text/css"/>
-	<script type="text/javascript" src="http://192.168.1.79:8888/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
-	<script type="text/javascript" src="http://192.168.1.79:8888/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
+	<link rel="stylesheet" href="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/ui.dynatree.css" type="text/css"/>
+	<script type="text/javascript" src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
 	<!-- If you want to run the HTML5SVG viewer please change the OZJSViewer.js to OZJSSVGViewer.js.
 	<script type="text/javascript" src="http://127.0.0.1:8080/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script>
 	-->
-	<script src="http://192.168.1.79:8888/oz80/ozhviewer/jquery.mouseSwipe.js" type="text/javascript"></script>
+	<script src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/jquery.mouseSwipe.js" type="text/javascript"></script>
 	<script src="../resources/js/reportControl.js"></script>
 </head>
 
@@ -40,12 +43,12 @@
 			var userId=$('#userNum').html();
 			var oz;
 			oz = document.getElementById("OZViewer");
-			oz.sendToActionScript("connection.servlet","http://192.168.1.79:8888/oz80/server");
+			oz.sendToActionScript("connection.servlet","http://<%out.print(properties.getOzIP());%>/oz80/server");
 			oz.sendToActionScript("connection.clientcachetype","none");
-			oz.sendToActionScript("connection.openfile","http://192.168.1.79:8888/ozsch80/Repository/ozd/"+userId+".ozd");
+			oz.sendToActionScript("connection.openfile","http://<%out.print(properties.getOzIP());%>/ozsch80/Repository/ozd/"+userId+".ozd");
 			return true;
 		}
-		start_ozjs("OZViewer","http://192.168.1.79:8888/oz80/ozhviewer/", true);
+		start_ozjs("OZViewer","http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/", true);
 	
 		function OZUserEvent_OZViewer(param1, param2, param3) {
 			if(param3=="save"){

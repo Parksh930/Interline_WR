@@ -1,18 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="test.interline.report.util.getProperties"%>
+<%@page import="java.util.Properties"%>
+<% getProperties properties= new getProperties(); %>
 <!DOCTYPE html>
 <html style="height:100%">
 <head>
 	<meta charset="utf8" http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<script src="../resources/js/reportControl.js"></script>
-	<script src="http://serverComputer:8888/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
-	<link rel="stylesheet" href="http://serverComputer:8888/oz80/ozhviewer/jquery-ui.css" type="text/css"/>
-	<script src="http://serverComputer:8888/oz80/ozhviewer/jquery-ui.min.js"></script>
-	<link rel="stylesheet" href="http://serverComputer:8888/oz80/ozhviewer/ui.dynatree.css" type="text/css"/>
-	<script type="text/javascript" src="http://serverComputer:8888/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
-	<script type="text/javascript" src="http://serverComputer:8888/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
+	<script src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
+	<link rel="stylesheet" href="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/jquery-ui.css" type="text/css"/>
+	<script src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/ui.dynatree.css" type="text/css"/>
+	<script type="text/javascript" src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
 	<!-- If you want to run the HTML5SVG viewer please change the OZJSViewer.js to OZJSSVGViewer.js.
-	<script type="text/javascript" src="http://serverComputer:8888/oz80/ozhviewer/OZJSSVGViewer.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/OZJSSVGViewer.js" charset="utf-8"></script>
 	-->
 </head>
 
@@ -42,7 +45,7 @@
 			var userNum=$('#userNum').html();
 			var oz;
 			oz = document.getElementById("OZViewer");
-			oz.sendToActionScript("connection.servlet","http://serverComputer:8888/oz80/server");
+			oz.sendToActionScript("connection.servlet","http://<%out.print(properties.getOzIP());%>/oz80/server");
 			oz.sendToActionScript("connection.reportname","weeklyReport.ozr");
 			oz.sendToActionScript("connection.pcount","3");
 			oz.sendToActionScript("connection.args1","week1="+period[0]);
@@ -55,7 +58,7 @@
 			
 			return true;
 		}
-		start_ozjs("OZViewer","http://serverComputer:8888/oz80/ozhviewer/");
+		start_ozjs("OZViewer","http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/");
 	
 		//input (string,string,string)
 		//return json

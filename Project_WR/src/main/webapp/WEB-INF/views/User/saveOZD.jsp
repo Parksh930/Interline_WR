@@ -1,6 +1,10 @@
 <%@page import="test.interline.report.vo.userVO"%>
+<%@page import="test.interline.report.util.getProperties"%>
+<%@page import="java.util.Properties"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
+
 <!-- /******************************************************************************************
 	Name
 		oz_export.jsp
@@ -61,6 +65,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
+<% getProperties properties= new getProperties(); %>
 <%
 
 	userVO user=(userVO)request.getSession().getAttribute("user_inform");
@@ -69,9 +74,9 @@
 	String[] week=(String[])request.getAttribute("week");
 	String tempJson=(String)request.getAttribute("tempJson");
 	
-	String		serverUrl	= "http://serverComputer:8888/oz80/server";
-
-	String		schedulerIp	= "serverComputer";
+	String		serverUrl	= "http://"+properties.getOzIP()+"/oz80/server";
+	
+	String		schedulerIp	= properties.getOzIP().split(":")[0];
 	int		schedulerPort	= Integer.parseInt("9521");
 
 	String		ozrName		= "weeklyReport.ozr";
@@ -119,6 +124,7 @@
 			
 			// 뷰어 패러미터 그대로 사용
 			configMap.setProperty("task_type", "viewerTag");
+			//configMap.setProperty("task_type", "none");
 			// 즉시 실행
 	 		configMap.setProperty("launch_type", "immediately");
 	 		// Task 의 타입 new, edit
